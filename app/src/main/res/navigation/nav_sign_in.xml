@@ -8,5 +8,18 @@
         android:id="@+id/signInFragment"
         android:name="com.kentoapps.ministagram.ui.signin.SignInFragment"
         android:label="sign_in_fragment"
-        tools:layout="@layout/sign_in_fragment"/>
+        tools:layout="@layout/sign_in_fragment">
+        <action
+            android:id="@+id/action_toSignUp"
+            app:destination="@id/signUpFragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim"/>
+    </fragment>
+    <fragment
+        android:id="@+id/signUpFragment"
+        android:name="com.kentoapps.ministagram.ui.signup.SignUpFragment"
+        android:label="fragment_sign_up"
+        tools:layout="@layout/sign_up_fragment"/>
 </navigation>

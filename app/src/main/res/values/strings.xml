@@ -6,4 +6,7 @@
     <string name="sign_up">Sign Up</string>
     <string name="email">Email</string>
     <string name="password">Password</string>
+    <string name="confirm">Confirm</string>
+    <string name="user_name">User Name</string>
+    <string name="error_sign_up">User name, email or password is wrong!</string>
 </resources>
