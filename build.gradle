@@ -37,4 +37,6 @@ ext {
     constraintLayoutVersion = "1.1.0"
     firebaseVersion = "16.0.0"
     firebaseAuthVersion = "16.0.1"
+    rxJavaVersion = '2.1.12'
+    rxKotlinVersion = '2.2.0'
 }
