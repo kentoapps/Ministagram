@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">Ministagram</string>
+    <string name="error_sign_in"><u>Email or password is wrong!</u></string>
+    <string name="label_no_account">You don’t have an account?</string>
+    <string name="sign_in">Sign In</string>
+    <string name="sign_up">Sign Up</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
 </resources>
