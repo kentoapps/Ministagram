@@ -4,9 +4,10 @@ import com.kentoapps.ministagram.data.model.User
 import io.reactivex.Completable
 import io.reactivex.Observable
 
-class UserRepository(private val dataSource: UserDataSource) : UserDataSource {
+class UserRepository/* TODO Inject using Dagger (private val dataSource: UserDataSource)*/ : UserDataSource {
     override fun signUp(userName: String, email: String, password: String): Completable {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        val dataSource = UserRemoteDataSource()
+        return dataSource.signUp(userName, email, password)
     }
 
     override fun signIn(email: String, password: String): Completable {
