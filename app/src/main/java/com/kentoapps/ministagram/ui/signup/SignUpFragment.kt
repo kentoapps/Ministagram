@@ -6,26 +6,23 @@ import android.support.v4.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-
-import com.kentoapps.ministagram.R
+import com.kentoapps.ministagram.databinding.SignUpFragmentBinding
 
 class SignUpFragment : Fragment() {
 
-    companion object {
-        fun newInstance() = SignUpFragment()
-    }
-
     private lateinit var viewModel: SignUpViewModel
+    private lateinit var binding: SignUpFragmentBinding
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
-        return inflater.inflate(R.layout.sign_up_fragment, container, false)
+        binding = SignUpFragmentBinding.inflate(inflater, container, false)
+        return binding.root
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         viewModel = ViewModelProviders.of(this).get(SignUpViewModel::class.java)
-        // TODO: Use the ViewModel
+        binding.vm = viewModel
     }
 
 }
