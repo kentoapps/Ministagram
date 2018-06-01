@@ -33,7 +33,14 @@ dependencies {
     implementation 'android.arch.navigation:navigation-ui:' + rootProject.navigationVersion
     implementation 'com.android.support:support-v4:27.1.1'
 
+    // Firebase
+    implementation 'com.google.firebase:firebase-core:' + rootProject.firebaseVersion
+    implementation 'com.google.firebase:firebase-firestore:' + rootProject.firebaseVersion
+    implementation 'com.google.firebase:firebase-auth:' + rootProject.firebaseAuthVersion
+
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
 }
+
+apply plugin: 'com.google.gms.google-services'
