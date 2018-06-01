@@ -35,7 +35,7 @@ dependencies {
 
     // Firebase
     implementation 'com.google.firebase:firebase-core:' + rootProject.firebaseVersion
-    implementation 'com.google.firebase:firebase-firestore:' + rootProject.firebaseVersion
+    implementation 'com.google.firebase:firebase-firestore:' + rootProject.firebaseFirestoreVersion
     implementation 'com.google.firebase:firebase-auth:' + rootProject.firebaseAuthVersion
 
     // Rx
