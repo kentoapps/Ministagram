@@ -40,4 +40,5 @@ ext {
     firebaseAuthVersion = "16.0.1"
     rxJavaVersion = '2.1.12'
     rxKotlinVersion = '2.2.0'
+    daggerVersion = '2.14.1'
 }

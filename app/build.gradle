@@ -1,6 +1,7 @@
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
 apply plugin: 'androidx.navigation.safeargs'
 
 android {
@@ -45,6 +46,13 @@ dependencies {
     // Rx
     implementation 'io.reactivex.rxjava2:rxjava:' + rootProject.rxJavaVersion
     implementation 'io.reactivex.rxjava2:rxkotlin:' + rootProject.rxKotlinVersion
+
+    //DI
+    implementation 'com.google.dagger:dagger:' + rootProject.daggerVersion
+    implementation 'com.google.dagger:dagger-android:' + rootProject.daggerVersion
+    implementation 'com.google.dagger:dagger-android-support:' + rootProject.daggerVersion
+    kapt 'com.google.dagger:dagger-compiler:' + rootProject.daggerVersion
+    kapt 'com.google.dagger:dagger-android-processor:' + rootProject.daggerVersion
 
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
