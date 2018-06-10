@@ -8,7 +8,6 @@ import javax.inject.Singleton
 
 @Module
 object DataModule {
-
     @Singleton
     @Provides
     @JvmStatic

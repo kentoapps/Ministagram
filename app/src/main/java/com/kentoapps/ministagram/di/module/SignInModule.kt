@@ -9,14 +9,13 @@ import dagger.Module
 import dagger.android.ContributesAndroidInjector
 import dagger.multibindings.IntoMap
 
-
 @Module
 abstract class SignInModule {
 //    @Binds
 //    @IntoMap
 //    @ActivityKey(SignInActivity::class)
 //    internal abstract fun bindInjectorFactory(builder: SignInActivityComponent.Builder): AndroidInjector.Factory<out Activity>
-
+//
 //    @ContributesAndroidInjector(modules = [SignInActivityModule::class])
 //    internal abstract fun contributeSignInActivity(): SignInActivity
 

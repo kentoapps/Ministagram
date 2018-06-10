@@ -9,7 +9,6 @@ import dagger.android.ContributesAndroidInjector
 
 @Module
 internal abstract class ActivityModule {
-
     @Binds
     abstract fun bindViewModelFactory(factory: ViewModelFactory): ViewModelProvider.Factory
 
