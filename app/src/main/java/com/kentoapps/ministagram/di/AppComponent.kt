@@ -1,4 +1,4 @@
-package com.kentoapps.ministagram.di.component
+package com.kentoapps.ministagram.di
 
 import com.kentoapps.ministagram.App
 import com.kentoapps.ministagram.di.module.ActivityModule

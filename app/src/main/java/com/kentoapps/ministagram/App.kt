@@ -1,7 +1,7 @@
 package com.kentoapps.ministagram
 
 import com.kentoapps.ministagram.di.applyAutoInjector
-import com.kentoapps.ministagram.di.component.DaggerAppComponent
+import com.kentoapps.ministagram.di.DaggerAppComponent
 import dagger.android.AndroidInjector
 import dagger.android.support.DaggerApplication
 
