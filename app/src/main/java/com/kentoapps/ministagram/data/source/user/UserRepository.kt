@@ -3,10 +3,10 @@ package com.kentoapps.ministagram.data.source.user
 import com.kentoapps.ministagram.data.model.User
 import io.reactivex.Completable
 import io.reactivex.Observable
+import javax.inject.Inject
 
-class UserRepository/* TODO Inject using Dagger (private val dataSource: UserDataSource)*/ : UserDataSource {
+class UserRepository @Inject constructor(private val dataSource: UserDataSource) : UserDataSource {
     override fun signUp(userName: String, email: String, password: String): Completable {
-        val dataSource = UserRemoteDataSource()
         return dataSource.signUp(userName, email, password)
     }
 
