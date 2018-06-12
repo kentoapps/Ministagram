@@ -12,11 +12,16 @@ class SignUpViewModel @Inject constructor(private val repository: UserDataSource
     val password = ObservableField<String>()
     val confirm = ObservableField<String>()
 
+    val errorMessage = ObservableField<String>()
+
     fun onSignUpClick() {
         // TODO Validate values
         repository.signUp(userName.get()!!, email.get()!!, password.get()!!)
                 .subscribeBy(
                         onComplete = { println("=== complete") },
-                        onError = { println("=== error: ${it.message}") })
+                        onError = {
+                            println("=== error: ${it.message}")
+                            errorMessage.set(it.message)
+                        })
     }
 }
