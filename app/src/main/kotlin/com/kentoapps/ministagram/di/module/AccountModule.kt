@@ -12,7 +12,7 @@ import dagger.android.ContributesAndroidInjector
 import dagger.multibindings.IntoMap
 
 @Module
-abstract class SignInModule {
+abstract class AccountModule {
 //    @Binds
 //    @IntoMap
 //    @ActivityKey(SignInActivity::class)

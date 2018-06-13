@@ -15,7 +15,7 @@
         <activity android:name=".MainActivity">
         </activity>
         <activity
-            android:name=".ui.SignInActivity"
+            android:name=".ui.AccountActivity"
             android:theme="@style/NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>

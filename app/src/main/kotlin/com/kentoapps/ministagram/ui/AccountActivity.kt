@@ -10,7 +10,7 @@ import dagger.android.DispatchingAndroidInjector
 import dagger.android.support.HasSupportFragmentInjector
 import javax.inject.Inject
 
-class SignInActivity : AppCompatActivity(), HasSupportFragmentInjector {
+class AccountActivity : AppCompatActivity(), HasSupportFragmentInjector {
     @Inject lateinit var androidInjector: DispatchingAndroidInjector<Fragment>
     @Inject lateinit var viewModelFactory: ViewModelProvider.Factory
 
