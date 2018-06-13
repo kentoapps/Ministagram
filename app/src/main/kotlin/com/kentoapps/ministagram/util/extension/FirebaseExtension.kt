@@ -10,3 +10,10 @@ fun FirebaseAuth.createUser(email: String,
     createUserWithEmailAndPassword(email, password)
             .addOnCompleteListener(complete)
 }
+
+fun FirebaseAuth.signIn(email: String,
+                        password: String,
+                        complete: (Task<AuthResult>) -> Unit) {
+    signInWithEmailAndPassword(email, password)
+            .addOnCompleteListener(complete)
+}
