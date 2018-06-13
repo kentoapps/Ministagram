@@ -11,14 +11,14 @@ class UserRepository @Inject constructor(private val dataSource: UserDataSource)
     }
 
     override fun signIn(email: String, password: String): Completable {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        return dataSource.signIn(email, password)
     }
 
     override fun signOut(): Completable {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        return dataSource.signOut()
     }
 
     override fun getUser(): Observable<User> {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        return dataSource.getUser()
     }
 }
