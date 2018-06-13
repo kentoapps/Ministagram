@@ -11,7 +11,7 @@ class SignInViewModel @Inject constructor(private val repository: UserDataSource
     val email = ObservableField<String>()
     val password = ObservableField<String>()
 
-    val errorMessage = ObservableField<String>()
+    val errorMessage = ObservableField<String>("")
 
     fun onSignInClick() {
         if (email.get().isNullOrBlank() || password.get().isNullOrBlank())
