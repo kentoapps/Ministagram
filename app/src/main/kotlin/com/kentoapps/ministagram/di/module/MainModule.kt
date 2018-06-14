@@ -6,6 +6,8 @@ import com.kentoapps.ministagram.ui.friends.FriendsFragment
 import com.kentoapps.ministagram.ui.friends.FriendsViewModel
 import com.kentoapps.ministagram.ui.timeline.TimelineFragment
 import com.kentoapps.ministagram.ui.timeline.TimelineViewModel
+import com.kentoapps.ministagram.ui.user.UserFragment
+import com.kentoapps.ministagram.ui.user.UserViewModel
 import dagger.Binds
 import dagger.Module
 import dagger.android.ContributesAndroidInjector
@@ -29,4 +31,12 @@ abstract class MainModule {
     @IntoMap
     @ViewModelKey(FriendsViewModel::class)
     abstract fun bindSignUpViewModel(viewModel: FriendsViewModel): ViewModel
+
+    @ContributesAndroidInjector
+    abstract fun contributeUserFragment(): UserFragment
+
+    @Binds
+    @IntoMap
+    @ViewModelKey(UserViewModel::class)
+    abstract fun bindUserViewModel(viewModel: UserViewModel): ViewModel
 }
