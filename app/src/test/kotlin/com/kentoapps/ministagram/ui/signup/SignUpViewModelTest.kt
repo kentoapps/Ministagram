@@ -1,6 +1,6 @@
 package com.kentoapps.ministagram.ui.signup
 
-import com.kentoapps.ministagram.data.source.user.UserDataSource
+import com.kentoapps.ministagram.data.source.user.UserRepository
 import com.nhaarman.mockito_kotlin.given
 import com.nhaarman.mockito_kotlin.never
 import com.nhaarman.mockito_kotlin.then
@@ -14,7 +14,7 @@ import org.mockito.MockitoAnnotations
 class SignUpViewModelTest {
 
     @InjectMocks private lateinit var sut: SignUpViewModel
-    @Mock private lateinit var repository: UserDataSource
+    @Mock private lateinit var repository: UserRepository
 
     @Before
     fun setUp() {

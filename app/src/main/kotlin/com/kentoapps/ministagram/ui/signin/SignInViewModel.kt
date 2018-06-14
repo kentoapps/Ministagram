@@ -2,13 +2,13 @@ package com.kentoapps.ministagram.ui.signin
 
 import android.arch.lifecycle.ViewModel
 import android.databinding.ObservableField
-import com.kentoapps.ministagram.data.source.user.UserDataSource
+import com.kentoapps.ministagram.data.source.user.UserRepository
 import com.kentoapps.ministagram.util.SingleLiveEvent
 import com.kentoapps.ministagram.util.extension.isValidEmail
 import io.reactivex.rxkotlin.subscribeBy
 import javax.inject.Inject
 
-class SignInViewModel @Inject constructor(private val repository: UserDataSource) : ViewModel() {
+class SignInViewModel @Inject constructor(private val repository: UserRepository) : ViewModel() {
     val email = ObservableField<String>()
     val password = ObservableField<String>()
 
