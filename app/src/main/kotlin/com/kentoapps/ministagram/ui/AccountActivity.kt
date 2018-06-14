@@ -18,7 +18,7 @@ class AccountActivity : AppCompatActivity(), HasSupportFragmentInjector {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_sign_in)
+        setContentView(R.layout.activity_account)
 //        val viewModel = ViewModelProviders.of(this, viewModelFactory).get(SignUpViewModel::class.java)
 //        println("======= $viewModel")
 
