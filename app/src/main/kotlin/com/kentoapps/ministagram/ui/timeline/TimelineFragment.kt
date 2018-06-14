@@ -1,4 +1,4 @@
-package com.kentoapps.ministagram.ui.main
+package com.kentoapps.ministagram.ui.timeline
 
 import android.arch.lifecycle.ViewModelProviders
 import android.os.Bundle
