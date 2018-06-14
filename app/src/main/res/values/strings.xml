@@ -9,4 +9,7 @@
     <string name="confirm">Confirm</string>
     <string name="user_name">User Name</string>
     <string name="error_sign_up">User name, email or password is wrong!</string>
+    <string name="timeline">Timeline</string>
+    <string name="friends">Friends</string>
+    <string name="user">User</string>
 </resources>

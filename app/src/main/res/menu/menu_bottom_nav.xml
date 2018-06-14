@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/timeline"
+        android:icon="@drawable/ic_timeline"
+        android:title="@string/timeline" />
+    <item
+        android:id="@id/friends"
+        android:icon="@drawable/ic_friends"
+        android:title="@string/friends" />
+    <item
+        android:id="@id/user"
+        android:icon="@drawable/ic_user"
+        android:title="@string/user" />
+</menu>
