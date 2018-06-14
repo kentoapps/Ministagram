@@ -33,7 +33,7 @@ ext {
     runnerVersion = "0.5"
     rulesVersion = "0.5"
     espressoVersion = "2.2.2"
-    navigationVersion = "1.0.0-alpha01"
+    navigationVersion = "1.0.0-alpha02"
     constraintLayoutVersion = "1.1.0"
     firebaseVersion = "16.0.0"
     firebaseFirestoreVersion = "17.0.1"
