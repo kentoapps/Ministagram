@@ -3,6 +3,7 @@ package com.kentoapps.ministagram.ui.signin
 import android.arch.lifecycle.ViewModel
 import android.databinding.ObservableField
 import com.kentoapps.ministagram.data.source.user.UserDataSource
+import com.kentoapps.ministagram.util.SingleLiveEvent
 import com.kentoapps.ministagram.util.extension.isValidEmail
 import io.reactivex.rxkotlin.subscribeBy
 import javax.inject.Inject
@@ -12,6 +13,7 @@ class SignInViewModel @Inject constructor(private val repository: UserDataSource
     val password = ObservableField<String>()
 
     val errorMessage = ObservableField<String>("")
+    val successCommand = SingleLiveEvent<Void>()
 
     fun onSignInClick() {
         if (email.get().isNullOrBlank() || password.get().isNullOrBlank())
@@ -21,7 +23,7 @@ class SignInViewModel @Inject constructor(private val repository: UserDataSource
         else
             repository.signIn(email.get()!!, password.get()!!)
                     .subscribeBy(
-                            onComplete = { println("=== complete") },
+                            onComplete = { successCommand.call() },
                             onError = {
                                 println("=== error: ${it.message}")
                                 errorMessage.set(it.message)
