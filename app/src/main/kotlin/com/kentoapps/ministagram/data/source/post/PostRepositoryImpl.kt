@@ -3,8 +3,9 @@ package com.kentoapps.ministagram.data.source.post
 import com.kentoapps.ministagram.data.model.Post
 import io.reactivex.Completable
 import io.reactivex.Observable
+import javax.inject.Inject
 
-class PostRepositoryImpl(private val dataSource: PostDataSource) : PostRepository {
+class PostRepositoryImpl @Inject constructor(private val dataSource: PostDataSource) : PostRepository {
     override fun getPostList(): Observable<List<Post>> {
         return dataSource.getPostList()
     }

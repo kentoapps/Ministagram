@@ -1,5 +1,9 @@
 package com.kentoapps.ministagram.di.module
 
+import com.kentoapps.ministagram.data.source.post.PostDataSource
+import com.kentoapps.ministagram.data.source.post.PostRemoteDataSource
+import com.kentoapps.ministagram.data.source.post.PostRepository
+import com.kentoapps.ministagram.data.source.post.PostRepositoryImpl
 import com.kentoapps.ministagram.data.source.user.UserDataSource
 import com.kentoapps.ministagram.data.source.user.UserRemoteDataSource
 import com.kentoapps.ministagram.data.source.user.UserRepository
@@ -19,4 +23,14 @@ object DataModule {
     @Provides
     @JvmStatic
     fun provideUserDataSource(): UserDataSource = UserRemoteDataSource()
+
+    @Singleton
+    @Provides
+    @JvmStatic
+    fun providePostRepository(dataSource: PostDataSource): PostRepository = PostRepositoryImpl(dataSource)
+
+    @Singleton
+    @Provides
+    @JvmStatic
+    fun providePostDataSource(): PostDataSource = PostRemoteDataSource()
 }
