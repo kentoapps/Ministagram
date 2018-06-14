@@ -10,7 +10,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.Navigation
-import com.kentoapps.ministagram.MainActivity
+import com.kentoapps.ministagram.ui.MainActivity
 import com.kentoapps.ministagram.R
 import com.kentoapps.ministagram.databinding.SignInFragmentBinding
 import com.kentoapps.ministagram.di.Injectable
