@@ -9,6 +9,8 @@ import android.view.View
 import android.view.ViewGroup
 import com.kentoapps.ministagram.databinding.TimelineFragmentBinding
 import com.kentoapps.ministagram.di.Injectable
+import io.reactivex.disposables.CompositeDisposable
+import io.reactivex.rxkotlin.addTo
 import javax.inject.Inject
 
 class TimelineFragment : Fragment(), Injectable {
@@ -19,6 +21,7 @@ class TimelineFragment : Fragment(), Injectable {
         ViewModelProviders.of(activity!!, viewModelFactory).get(TimelineViewModel::class.java)
     }
     private lateinit var binding: TimelineFragmentBinding
+    private val disposables = CompositeDisposable()
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View {
@@ -28,6 +31,13 @@ class TimelineFragment : Fragment(), Injectable {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
+        val adapter = TimelineAdapter(viewModel)
+        viewModel.posts.subscribe { adapter.submitList(it) }.addTo(disposables)
+        binding.timelineRecycler.adapter = adapter
     }
 
+    override fun onDestroyView() {
+        disposables.clear()
+        super.onDestroyView()
+    }
 }
