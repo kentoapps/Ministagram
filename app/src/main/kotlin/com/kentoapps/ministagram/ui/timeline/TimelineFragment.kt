@@ -7,7 +7,7 @@ import android.support.v4.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.kentoapps.ministagram.R
+import com.kentoapps.ministagram.databinding.TimelineFragmentBinding
 import com.kentoapps.ministagram.di.Injectable
 import javax.inject.Inject
 
@@ -18,10 +18,12 @@ class TimelineFragment : Fragment(), Injectable {
     private val viewModel by lazy {
         ViewModelProviders.of(activity!!, viewModelFactory).get(TimelineViewModel::class.java)
     }
+    private lateinit var binding: TimelineFragmentBinding
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View {
-        return inflater.inflate(R.layout.timeline_fragment, container, false)
+        binding = TimelineFragmentBinding.inflate(inflater, container, false)
+        return binding.root
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
