@@ -34,6 +34,8 @@ class TimelineFragment : Fragment(), Injectable {
         val adapter = TimelineAdapter(viewModel)
         viewModel.posts.subscribe { adapter.submitList(it) }.addTo(disposables)
         binding.timelineRecycler.adapter = adapter
+
+        if (savedInstanceState == null) viewModel.getPostList()
     }
 
     override fun onDestroyView() {
