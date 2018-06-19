@@ -7,6 +7,8 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import com.kentoapps.ministagram.data.model.Post
 import com.kentoapps.ministagram.databinding.CellPostBinding
+import com.kentoapps.ministagram.util.extension.Suffix
+import com.kentoapps.ministagram.util.extension.withSuffix
 
 class TimelineAdapter(private val viewModel: TimelineViewModel) : ListAdapter<Post, TimelineAdapter.ViewHolder>(DIFF_CALLBACK) {
 
@@ -24,6 +26,8 @@ class TimelineAdapter(private val viewModel: TimelineViewModel) : ListAdapter<Po
         fun bind(item: Post) {
             binding.item = item
             binding.vm = viewModel
+            binding.likeNumText.text = item.likeUsers.size.withSuffix(Suffix.LIKE)
+            binding.commentNumText.text = item.numOfComments.withSuffix(Suffix.COMMENT)
         }
     }
 
