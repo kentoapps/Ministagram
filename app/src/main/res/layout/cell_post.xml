@@ -27,9 +27,11 @@
             android:layout_height="40dp"
             android:layout_marginStart="16dp"
             android:layout_marginTop="8dp"
+            android:scaleType="centerCrop"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            tools:srcCompat="@tools:sample/avatars"/>
+            tools:srcCompat="@tools:sample/avatars"
+            image="@{item.userImage}"/>
 
         <TextView
             android:id="@+id/userText"
@@ -47,6 +49,7 @@
 
         <ImageView
             android:id="@+id/postImage"
+            image="@{item.image}"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
