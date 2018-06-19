@@ -59,6 +59,9 @@ dependencies {
     kapt 'com.google.dagger:dagger-compiler:' + rootProject.daggerVersion
     kapt 'com.google.dagger:dagger-android-processor:' + rootProject.daggerVersion
 
+    // UI
+    implementation 'com.squareup.picasso:picasso:2.71828'
+
     // Test
     testImplementation "com.nhaarman:mockito-kotlin:1.5.0"
     testImplementation 'junit:junit:4.12'
