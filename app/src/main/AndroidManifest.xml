@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns:tools="http://schemas.android.com/tools"
+<manifest package="com.kentoapps.ministagram"
           xmlns:android="http://schemas.android.com/apk/res/android"
-          package="com.kentoapps.ministagram">
+          xmlns:tools="http://schemas.android.com/tools">
 
     <application
         android:name=".App"
@@ -22,6 +22,8 @@
 
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
+        </activity>
+        <activity android:name=".ui.CameraActivity">
         </activity>
     </application>
 
