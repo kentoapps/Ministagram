@@ -4,6 +4,7 @@ import android.arch.lifecycle.ViewModelProvider
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v7.app.AppCompatActivity
+import android.widget.Toast
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.NavigationUI
 import com.kentoapps.ministagram.R
@@ -30,5 +31,10 @@ class MainActivity : AppCompatActivity(), HasSupportFragmentInjector {
 
         val navController = host.navController
         NavigationUI.setupWithNavController(bottom_nav_view, navController)
+
+        cameraButton.setOnClickListener {
+            println("=========== camera button")
+            Toast.makeText(this, "Not implemented yet...", Toast.LENGTH_SHORT).show()
+        }
     }
 }
