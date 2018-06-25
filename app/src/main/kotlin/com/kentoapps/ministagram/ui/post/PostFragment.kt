@@ -4,9 +4,7 @@ import android.arch.lifecycle.ViewModelProviders
 import android.net.Uri
 import android.os.Bundle
 import android.support.v4.app.Fragment
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.view.*
 import com.kentoapps.ministagram.R
 import kotlinx.android.synthetic.main.post_fragment.*
 
@@ -17,6 +15,7 @@ class PostFragment : Fragment() {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
+        setHasOptionsMenu(true)
         return inflater.inflate(R.layout.post_fragment, container, false)
     }
 
@@ -26,5 +25,16 @@ class PostFragment : Fragment() {
 
         println("========== $imageUri")
         postImage.setImageURI(imageUri)
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu?, inflater: MenuInflater?) {
+        inflater?.inflate(R.menu.menu_post, menu)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem?): Boolean {
+        when (item?.itemId) {
+            R.id.post -> print("post!!")
+        }
+        return super.onOptionsItemSelected(item)
     }
 }

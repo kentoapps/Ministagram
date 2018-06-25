@@ -14,4 +14,5 @@
     <string name="user">User</string>
     <string name="camera">Camera</string>
     <string name="photo">Photo</string>
+    <string name="post">Post</string>
 </resources>
