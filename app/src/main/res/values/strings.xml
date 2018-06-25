@@ -12,4 +12,6 @@
     <string name="timeline">Timeline</string>
     <string name="friends">Friends</string>
     <string name="user">User</string>
+    <string name="camera">Camera</string>
+    <string name="photo">Photo</string>
 </resources>
