@@ -16,7 +16,7 @@ class FriendsFragment : Fragment(), Injectable {
     lateinit var viewModelFactory: ViewModelProvider.Factory
 
     private val viewModel by lazy {
-        ViewModelProviders.of(activity!!, viewModelFactory).get(FriendsViewModel::class.java)
+        ViewModelProviders.of(requireActivity(), viewModelFactory).get(FriendsViewModel::class.java)
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,

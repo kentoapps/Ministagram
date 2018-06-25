@@ -9,16 +9,16 @@ import android.support.v4.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.kentoapps.ministagram.ui.MainActivity
 import com.kentoapps.ministagram.databinding.SignUpFragmentBinding
 import com.kentoapps.ministagram.di.Injectable
+import com.kentoapps.ministagram.ui.MainActivity
 import javax.inject.Inject
 
 class SignUpFragment : Fragment(), Injectable {
     @Inject
     lateinit var viewModelFactory: ViewModelProvider.Factory
 
-    private val viewModel by lazy { ViewModelProviders.of(activity!!, viewModelFactory).get(SignUpViewModel::class.java) }
+    private val viewModel by lazy { ViewModelProviders.of(requireActivity(), viewModelFactory).get(SignUpViewModel::class.java) }
     private lateinit var binding: SignUpFragmentBinding
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,

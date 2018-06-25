@@ -16,7 +16,7 @@ class UserFragment : Fragment(), Injectable {
     lateinit var viewModelFactory: ViewModelProvider.Factory
 
     private val viewModel by lazy {
-        ViewModelProviders.of(activity!!, viewModelFactory).get(UserViewModel::class.java)
+        ViewModelProviders.of(requireActivity(), viewModelFactory).get(UserViewModel::class.java)
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,

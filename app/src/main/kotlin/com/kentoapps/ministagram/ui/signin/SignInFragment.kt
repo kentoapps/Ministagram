@@ -10,10 +10,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.Navigation
-import com.kentoapps.ministagram.ui.MainActivity
 import com.kentoapps.ministagram.R
 import com.kentoapps.ministagram.databinding.SignInFragmentBinding
 import com.kentoapps.ministagram.di.Injectable
+import com.kentoapps.ministagram.ui.MainActivity
 import kotlinx.android.synthetic.main.sign_in_fragment.*
 import javax.inject.Inject
 
@@ -22,7 +22,7 @@ class SignInFragment : Fragment(), Injectable {
     lateinit var viewModelFactory: ViewModelProvider.Factory
 
     private val viewModel by lazy {
-        ViewModelProviders.of(activity!!, viewModelFactory).get(SignInViewModel::class.java)
+        ViewModelProviders.of(requireActivity(), viewModelFactory).get(SignInViewModel::class.java)
     }
     private lateinit var binding: SignInFragmentBinding
 

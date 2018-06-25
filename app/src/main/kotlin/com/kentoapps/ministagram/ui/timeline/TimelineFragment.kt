@@ -17,7 +17,7 @@ class TimelineFragment : Fragment(), Injectable {
     lateinit var viewModelFactory: ViewModelProvider.Factory
 
     private val viewModel by lazy {
-        ViewModelProviders.of(activity!!, viewModelFactory).get(TimelineViewModel::class.java)
+        ViewModelProviders.of(requireActivity(), viewModelFactory).get(TimelineViewModel::class.java)
     }
     private lateinit var binding: TimelineFragmentBinding
     private val disposables = CompositeDisposable()
