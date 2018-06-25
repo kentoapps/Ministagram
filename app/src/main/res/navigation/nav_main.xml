@@ -20,4 +20,18 @@
         android:name="com.kentoapps.ministagram.ui.user.UserFragment"
         android:label="user_fragment"
         tools:layout="@layout/user_fragment"/>
+    <fragment
+        android:id="@+id/postFragment"
+        android:name="com.kentoapps.ministagram.ui.post.PostFragment"
+        android:label="post_fragment"
+        tools:layout="@layout/post_fragment">
+        <argument
+            android:name="imageUrl"
+            app:type="string"/>
+    </fragment>
+    <activity
+        android:id="@+id/camera_activity"
+        android:name="com.kentoapps.ministagram.ui.CameraActivity"
+        android:label="activity_camera"
+        tools:layout="@layout/activity_camera"/>
 </navigation>
