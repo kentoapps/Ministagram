@@ -1,5 +1,6 @@
 package com.kentoapps.ministagram.ui
 
+import android.app.Activity
 import android.arch.lifecycle.ViewModelProvider
 import android.content.Intent
 import android.os.Bundle
@@ -11,6 +12,7 @@ import androidx.navigation.Navigation
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.NavigationUI
 import com.kentoapps.ministagram.R
+import com.kentoapps.ministagram.ui.post.PostFragmentArgs
 import dagger.android.AndroidInjector
 import dagger.android.DispatchingAndroidInjector
 import dagger.android.support.HasSupportFragmentInjector
@@ -56,11 +58,11 @@ class MainActivity : AppCompatActivity(), HasSupportFragmentInjector {
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
-        when(requestCode) {
-            REQUEST_CODE -> {
-                val resultUri = data?.data
-                println("======= Result uri: $resultUri")
-            }
+        val imageUri = data?.data?.toString()
+        if (requestCode == REQUEST_CODE && resultCode == Activity.RESULT_OK && imageUri != null) {
+            val bundle = PostFragmentArgs.Builder(imageUri).build().toBundle()
+            Navigation.findNavController(this, R.id.nav_host_fragment)
+                    .navigate(R.id.postFragment, bundle)
         }
     }
 

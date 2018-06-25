@@ -26,7 +26,7 @@
         android:label="post_fragment"
         tools:layout="@layout/post_fragment">
         <argument
-            android:name="imageUrl"
+            android:name="imageUri"
             app:type="string"/>
     </fragment>
     <activity
