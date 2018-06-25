@@ -49,10 +49,9 @@ class MainActivity : AppCompatActivity(), HasSupportFragmentInjector {
                 startActivityForResult(Intent(Intent.ACTION_GET_CONTENT).run { setType("image/*") }, REQUEST_CODE)
                 super.onOptionsItemSelected(item)
             }
-            R.id.camera_activity -> NavigationUI.onNavDestinationSelected(item,
+            else -> NavigationUI.onNavDestinationSelected(item,
                     Navigation.findNavController(this, R.id.nav_host_fragment))
                     || super.onOptionsItemSelected(item)
-            else -> super.onOptionsItemSelected(item)
         }
     }
 
