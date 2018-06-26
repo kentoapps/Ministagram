@@ -38,6 +38,7 @@ ext {
     firebaseVersion = "16.0.0"
     firebaseFirestoreVersion = "17.0.1"
     firebaseAuthVersion = "16.0.1"
+    firebaseStorageVersion = "16.0.1"
     rxJavaVersion = '2.1.12'
     rxKotlinVersion = '2.2.0'
     daggerVersion = '2.14.1'

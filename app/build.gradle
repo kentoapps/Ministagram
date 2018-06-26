@@ -47,6 +47,7 @@ dependencies {
     implementation 'com.google.firebase:firebase-core:' + rootProject.firebaseVersion
     implementation 'com.google.firebase:firebase-firestore:' + rootProject.firebaseFirestoreVersion
     implementation 'com.google.firebase:firebase-auth:' + rootProject.firebaseAuthVersion
+    implementation 'com.google.firebase:firebase-storage:' + rootProject.firebaseStorageVersion
 
     // Rx
     implementation 'io.reactivex.rxjava2:rxjava:' + rootProject.rxJavaVersion
