@@ -1,17 +1,24 @@
 package com.kentoapps.ministagram.ui.post
 
+import android.arch.lifecycle.ViewModelProvider
 import android.arch.lifecycle.ViewModelProviders
 import android.net.Uri
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.view.*
 import com.kentoapps.ministagram.R
+import com.kentoapps.ministagram.di.Injectable
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.post_fragment.*
+import javax.inject.Inject
 
+class PostFragment : Fragment(), Injectable {
+    @Inject
+    lateinit var viewModelFactory: ViewModelProvider.Factory
 
-class PostFragment : Fragment() {
-    private lateinit var viewModel: PostViewModel
+    private val viewModel by lazy {
+        ViewModelProviders.of(requireActivity(), viewModelFactory).get(PostViewModel::class.java)
+    }
     private val imageUri by lazy { Uri.parse(arguments?.let { PostFragmentArgs.fromBundle(it).imageUri }) }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
@@ -22,7 +29,6 @@ class PostFragment : Fragment() {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProviders.of(this).get(PostViewModel::class.java)
         postImage.setImageURI(imageUri)
     }
 
