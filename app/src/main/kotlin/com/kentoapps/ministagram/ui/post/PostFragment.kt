@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.view.*
 import com.kentoapps.ministagram.R
+import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.post_fragment.*
 
 
@@ -25,6 +26,16 @@ class PostFragment : Fragment() {
 
         println("========== $imageUri")
         postImage.setImageURI(imageUri)
+    }
+
+    override fun onResume() {
+        super.onResume()
+        requireActivity().bottom_nav_view.visibility = View.GONE
+    }
+
+    override fun onPause() {
+        super.onPause()
+        requireActivity().bottom_nav_view.visibility = View.VISIBLE
     }
 
     override fun onCreateOptionsMenu(menu: Menu?, inflater: MenuInflater?) {
