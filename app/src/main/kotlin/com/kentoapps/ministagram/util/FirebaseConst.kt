@@ -4,4 +4,4 @@ const val COLLECTION_POST = "Post"
 const val COLLECTION_COMMENT = "Comment"
 const val COLLECTION_USER = "User"
 
-const val STORAGE_PHOTOS = "Photos"
+const val STORAGE_POSTS = "Posts"

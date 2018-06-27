@@ -5,8 +5,10 @@ import com.google.firebase.storage.FirebaseStorage
 import com.kentoapps.ministagram.data.model.Post
 import com.kentoapps.ministagram.data.model.PostRequest
 import com.kentoapps.ministagram.util.COLLECTION_POST
+import com.kentoapps.ministagram.util.STORAGE_POSTS
 import io.reactivex.Completable
 import io.reactivex.Observable
+import java.util.*
 
 class PostRemoteDataSource : PostDataSource {
     private val db = FirebaseFirestore.getInstance()
@@ -31,9 +33,14 @@ class PostRemoteDataSource : PostDataSource {
     }
 
     override fun savePost(post: PostRequest): Completable {
-        // TODO It's done using WorkManager
+        // TODO It should be done using WorkManager
         return Completable.create { emitter ->
-            storage.reference.child(post.uri.lastPathSegment)
+            val fileName = "${post.uri.lastPathSegment}_${Date()}"
+            println("===== before ${post.userId} ${post.userName} $fileName")
+            storage.reference
+                    .child(STORAGE_POSTS)
+                    .child(post.userId)
+                    .child(fileName)
                     .putFile(post.uri)
                     .addOnSuccessListener { taskSnapshot ->
                         println("======= ${taskSnapshot.uploadSessionUri}")
