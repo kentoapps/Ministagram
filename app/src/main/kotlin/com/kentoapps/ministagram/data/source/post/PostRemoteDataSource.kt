@@ -38,9 +38,7 @@ class PostRemoteDataSource : PostDataSource {
             val fileName = "${post.uri.lastPathSegment}_${Date()}"
             println("===== before ${post.userId} ${post.userName} $fileName")
             storage.reference
-                    .child(STORAGE_POSTS)
-                    .child(post.userId)
-                    .child(fileName)
+                    .child("$STORAGE_POSTS/${post.userId}/$fileName")
                     .putFile(post.uri)
                     .addOnSuccessListener { taskSnapshot ->
                         println("======= ${taskSnapshot.uploadSessionUri}")
