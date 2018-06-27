@@ -39,12 +39,12 @@ class PostFragment : Fragment(), Injectable {
 
     override fun onResume() {
         super.onResume()
-        requireActivity().bottom_nav_view.visibility = View.GONE
+        requireActivity().bottomNavView.visibility = View.GONE
     }
 
     override fun onPause() {
         super.onPause()
-        requireActivity().bottom_nav_view.visibility = View.VISIBLE
+        requireActivity().bottomNavView.visibility = View.VISIBLE
     }
 
     override fun onCreateOptionsMenu(menu: Menu?, inflater: MenuInflater?) {

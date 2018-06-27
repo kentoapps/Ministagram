@@ -35,7 +35,7 @@
         app:navGraph="@navigation/nav_main"/>
 
     <android.support.design.widget.BottomNavigationView
-        android:id="@+id/bottom_nav_view"
+        android:id="@+id/bottomNavView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@android:color/white"

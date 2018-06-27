@@ -34,7 +34,7 @@ class MainActivity : AppCompatActivity(), HasSupportFragmentInjector {
         val host: NavHostFragment = nav_host_fragment as NavHostFragment? ?: return
 
         val navController = host.navController
-        NavigationUI.setupWithNavController(bottom_nav_view, navController)
+        NavigationUI.setupWithNavController(bottomNavView, navController)
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
