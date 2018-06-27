@@ -38,7 +38,6 @@ class MainActivity : AppCompatActivity(), HasSupportFragmentInjector {
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        println("======= onOptions Activity")
         return when (item.itemId) {
             R.id.gallery -> {
                 startActivityForResult(Intent(Intent.ACTION_GET_CONTENT).run { setType("image/*") }, REQUEST_CODE)
