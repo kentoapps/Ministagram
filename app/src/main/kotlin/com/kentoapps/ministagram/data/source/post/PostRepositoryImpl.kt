@@ -1,5 +1,6 @@
 package com.kentoapps.ministagram.data.source.post
 
+import android.net.Uri
 import com.kentoapps.ministagram.data.model.Post
 import io.reactivex.Completable
 import io.reactivex.Observable
@@ -14,8 +15,8 @@ class PostRepositoryImpl @Inject constructor(private val dataSource: PostDataSou
         return dataSource.getPost(id)
     }
 
-    override fun savePost(post: Post): Completable {
-        return dataSource.savePost(post)
+    override fun savePost(uri: Uri, caption: String): Completable {
+        return dataSource.savePost(uri, caption)
     }
 
     override fun updatePost(post: Post): Completable {
