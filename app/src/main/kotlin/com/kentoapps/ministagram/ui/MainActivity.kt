@@ -31,7 +31,7 @@ class MainActivity : AppCompatActivity(), HasSupportFragmentInjector {
         setContentView(R.layout.activity_main)
         setSupportActionBar(toolbar)
 
-        val host: NavHostFragment = nav_host_fragment as NavHostFragment? ?: return
+        val host: NavHostFragment = navHostFragment as NavHostFragment? ?: return
 
         val navController = host.navController
         NavigationUI.setupWithNavController(bottomNavView, navController)
@@ -45,7 +45,7 @@ class MainActivity : AppCompatActivity(), HasSupportFragmentInjector {
                 super.onOptionsItemSelected(item)
             }
             else -> NavigationUI.onNavDestinationSelected(item,
-                    Navigation.findNavController(this, R.id.nav_host_fragment))
+                    Navigation.findNavController(this, R.id.navHostFragment))
                     || super.onOptionsItemSelected(item)
         }
     }
@@ -55,7 +55,7 @@ class MainActivity : AppCompatActivity(), HasSupportFragmentInjector {
         val imageUri = data?.data?.toString()
         if (requestCode == REQUEST_CODE && resultCode == Activity.RESULT_OK && imageUri != null) {
             val bundle = PostFragmentArgs.Builder(imageUri).build().toBundle()
-            Navigation.findNavController(this, R.id.nav_host_fragment)
+            Navigation.findNavController(this, R.id.navHostFragment)
                     .navigate(R.id.postFragment, bundle)
         }
     }
