@@ -35,6 +35,6 @@ class UserRemoteDataSource : UserDataSource {
     }
 
     override fun getUser(): Observable<User> {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        return Observable.just(User("123", "kento_user", "https://avatars1.githubusercontent.com/u/8979200?s=460&v=4"))
     }
 }
