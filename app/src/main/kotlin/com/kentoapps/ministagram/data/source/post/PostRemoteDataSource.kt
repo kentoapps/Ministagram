@@ -32,9 +32,7 @@ class PostRemoteDataSource : PostDataSource {
 
     override fun savePost(post: PostRequest): Completable {
         // TODO It's done using WorkManager
-        println("======= savePost")
         return Completable.create { emitter ->
-            println("======== putFile")
             storage.reference.child(post.uri.lastPathSegment)
                     .putFile(post.uri)
                     .addOnSuccessListener { taskSnapshot ->

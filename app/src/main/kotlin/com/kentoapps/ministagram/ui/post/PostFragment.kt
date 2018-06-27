@@ -52,12 +52,8 @@ class PostFragment : Fragment(), Injectable {
     }
 
     override fun onOptionsItemSelected(item: MenuItem?): Boolean {
-        println("======== onOptionsItemSelected")
         when (item?.itemId) {
-            R.id.post -> {
-                println("======== post")
-                viewModel.savePost()
-            }
+            R.id.post -> viewModel.savePost()
         }
         return super.onOptionsItemSelected(item)
     }
