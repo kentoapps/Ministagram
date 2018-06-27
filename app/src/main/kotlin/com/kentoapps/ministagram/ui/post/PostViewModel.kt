@@ -6,6 +6,7 @@ import android.net.Uri
 import com.kentoapps.ministagram.data.model.PostRequest
 import com.kentoapps.ministagram.data.source.post.PostRepository
 import com.kentoapps.ministagram.data.source.user.UserRepository
+import com.kentoapps.ministagram.util.SingleLiveEvent
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.rxkotlin.addTo
 import io.reactivex.rxkotlin.subscribeBy
@@ -18,6 +19,9 @@ class PostViewModel @Inject constructor(
     val uri = ObservableField<Uri>()
     val caption = ObservableField<String>()
 
+    val errorMessage = ObservableField<String>("")
+    val successCommand = SingleLiveEvent<Void>()
+
     private val disposables = CompositeDisposable()
 
     fun savePost() {
@@ -28,8 +32,11 @@ class PostViewModel @Inject constructor(
                     repository.savePost(PostRequest(uri, caption, user.userId!!, user.userName!!, user.userImage!!))
                 }
                 .subscribeBy(
-                        onComplete = {},
-                        onError = {}
+                        onComplete = {
+                            this.caption.set("")
+                            successCommand.call()
+                        },
+                        onError = { errorMessage.set(it.toString()) }
                 ).addTo(disposables)
     }
 
