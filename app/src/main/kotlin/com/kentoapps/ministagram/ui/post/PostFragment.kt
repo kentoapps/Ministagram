@@ -7,9 +7,9 @@ import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.view.*
 import com.kentoapps.ministagram.R
+import com.kentoapps.ministagram.databinding.PostFragmentBinding
 import com.kentoapps.ministagram.di.Injectable
 import kotlinx.android.synthetic.main.activity_main.*
-import kotlinx.android.synthetic.main.post_fragment.*
 import javax.inject.Inject
 
 class PostFragment : Fragment(), Injectable {
@@ -19,17 +19,22 @@ class PostFragment : Fragment(), Injectable {
     private val viewModel by lazy {
         ViewModelProviders.of(requireActivity(), viewModelFactory).get(PostViewModel::class.java)
     }
-    private val imageUri by lazy { Uri.parse(arguments?.let { PostFragmentArgs.fromBundle(it).imageUri }) }
+    private val imageUri by lazy {
+        Uri.parse(arguments?.let { PostFragmentArgs.fromBundle(it).imageUri })
+    }
+    private lateinit var binding: PostFragmentBinding
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
         setHasOptionsMenu(true)
-        return inflater.inflate(R.layout.post_fragment, container, false)
+        binding = PostFragmentBinding.inflate(inflater, container, false)
+        return binding.root
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        postImage.setImageURI(imageUri)
+        binding.vm = viewModel
+        viewModel.uri.set(imageUri)
     }
 
     override fun onResume() {
@@ -51,7 +56,7 @@ class PostFragment : Fragment(), Injectable {
         when (item?.itemId) {
             R.id.post -> {
                 println("======== post")
-                viewModel.savePost(imageUri, "test caption")
+                viewModel.savePost()
             }
         }
         return super.onOptionsItemSelected(item)
