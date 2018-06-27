@@ -8,7 +8,7 @@ import io.reactivex.Observable
 interface PostDataSource {
     fun getPostList(): Observable<List<Post>>
     fun getPost(id: String): Observable<Post>
-    fun savePost(post: PostRequest): Completable
+    fun savePost(pr: PostRequest): Completable
     fun updatePost(post: Post): Completable
     fun deletePost(id: String): Completable
 }

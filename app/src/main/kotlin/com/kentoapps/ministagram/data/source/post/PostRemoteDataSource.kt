@@ -8,6 +8,7 @@ import com.kentoapps.ministagram.util.COLLECTION_POST
 import com.kentoapps.ministagram.util.STORAGE_POSTS
 import io.reactivex.Completable
 import io.reactivex.Observable
+import java.text.SimpleDateFormat
 import java.util.*
 
 class PostRemoteDataSource : PostDataSource {
@@ -32,19 +33,21 @@ class PostRemoteDataSource : PostDataSource {
         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 
-    override fun savePost(post: PostRequest): Completable {
+    override fun savePost(pr: PostRequest): Completable {
         // TODO It should be done using WorkManager
         return Completable.create { emitter ->
-            val fileName = "${post.uri.lastPathSegment}_${Date()}"
-            println("===== before ${post.userId} ${post.userName} $fileName")
-            storage.reference
-                    .child("$STORAGE_POSTS/${post.userId}/$fileName")
-                    .putFile(post.uri)
-                    .addOnSuccessListener { taskSnapshot ->
-                        println("======= ${taskSnapshot.uploadSessionUri}")
-                    }.addOnFailureListener { exception ->
-                        println("======= ${exception.message}")
-                    }
+            val fileName = "${pr.uri.lastPathSegment}_${SimpleDateFormat("yyyyMMdd_HHmm").format(Date())}"
+            val filePath = storage.getReference("$STORAGE_POSTS/${pr.userId}").child(fileName)
+            filePath.putFile(pr.uri)
+                    .addOnSuccessListener {
+                        filePath.downloadUrl.addOnSuccessListener { uri ->
+                            val post = generatePost(pr, uri.toString())
+                            db.collection(COLLECTION_POST)
+                                    .add(post)
+                                    .addOnSuccessListener { emitter.onComplete() }
+                                    .addOnFailureListener { emitter.onError(it) }
+                        }
+                    }.addOnFailureListener { emitter.onError(it) }
         }
     }
 
@@ -55,4 +58,13 @@ class PostRemoteDataSource : PostDataSource {
     override fun deletePost(id: String): Completable {
         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
+
+    private fun generatePost(pr: PostRequest, imageUrl: String) =
+            Post(
+                    userId = pr.userId,
+                    userName = pr.userName,
+                    userImage = pr.userImage,
+                    image = imageUrl,
+                    caption = pr.caption,
+                    date = Date())
 }
