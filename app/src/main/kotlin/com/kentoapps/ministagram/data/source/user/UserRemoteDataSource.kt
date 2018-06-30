@@ -1,7 +1,9 @@
 package com.kentoapps.ministagram.data.source.user
 
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.FirebaseFirestore
 import com.kentoapps.ministagram.data.model.User
+import com.kentoapps.ministagram.util.COLLECTION_USER
 import com.kentoapps.ministagram.util.extension.createUser
 import com.kentoapps.ministagram.util.extension.signIn
 import io.reactivex.Completable
@@ -15,8 +17,13 @@ class UserRemoteDataSource : UserDataSource {
         return Completable.create { emitter ->
             FirebaseAuth.getInstance()
                     .createUser(email, password) { task ->
-                        if (task.isSuccessful) emitter.onComplete()
-                        else emitter.onError(Throwable(task.exception?.message))
+                        if (task.isSuccessful) {
+                            FirebaseFirestore.getInstance().collection(COLLECTION_USER)
+                                    .add(User(userId = task.result.user.uid, userName = userName))
+                                    .addOnSuccessListener { emitter.onComplete() }
+                                    .addOnFailureListener { emitter.onError(it) }
+                        } else emitter.onError(Throwable(task.exception?.message))
+
                     }
         }
     }
