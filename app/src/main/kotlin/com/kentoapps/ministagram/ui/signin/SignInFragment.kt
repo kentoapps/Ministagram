@@ -3,17 +3,16 @@ package com.kentoapps.ministagram.ui.signin
 import android.arch.lifecycle.Observer
 import android.arch.lifecycle.ViewModelProvider
 import android.arch.lifecycle.ViewModelProviders
-import android.content.Intent
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.Navigation
+import androidx.navigation.fragment.NavHostFragment
 import com.kentoapps.ministagram.R
 import com.kentoapps.ministagram.databinding.SignInFragmentBinding
 import com.kentoapps.ministagram.di.Injectable
-import com.kentoapps.ministagram.ui.MainActivity
 import kotlinx.android.synthetic.main.sign_in_fragment.*
 import javax.inject.Inject
 
@@ -39,7 +38,7 @@ class SignInFragment : Fragment(), Injectable {
         buttonSignUp.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_toSignUp, null))
 
         viewModel.successCommand.observe(this, Observer {
-            startActivity(Intent(context, MainActivity::class.java))
+            NavHostFragment.findNavController(this).navigate(R.id.main_activity)
             requireActivity().finish()
         })
     }

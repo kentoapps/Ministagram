@@ -30,8 +30,8 @@
             app:type="string"/>
     </fragment>
     <activity
-        android:id="@+id/camera_activity"
-        android:name="com.kentoapps.ministagram.ui.CameraActivity"
-        android:label="activity_camera"
-        tools:layout="@layout/activity_camera"/>
+        android:id="@+id/account_activity"
+        android:name="com.kentoapps.ministagram.ui.AccountActivity"
+        android:label="activity_account"
+        tools:layout="@layout/activity_account"/>
 </navigation>

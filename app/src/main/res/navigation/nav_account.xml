@@ -22,4 +22,9 @@
         android:name="com.kentoapps.ministagram.ui.signup.SignUpFragment"
         android:label="fragment_sign_up"
         tools:layout="@layout/sign_up_fragment"/>
+    <activity
+        android:id="@+id/main_activity"
+        android:name="com.kentoapps.ministagram.ui.MainActivity"
+        android:label="activity_main"
+        tools:layout="@layout/activity_main"/>
 </navigation>
