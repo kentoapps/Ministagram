@@ -31,10 +31,10 @@ class SignUpFragment : Fragment(), Injectable {
         super.onActivityCreated(savedInstanceState)
         binding.vm = viewModel
 
+        viewModel.errorMessage.set("")
         viewModel.successCommand.observe(this, Observer {
             NavHostFragment.findNavController(this).navigate(R.id.main_activity)
             requireActivity().finish()
         })
     }
-
 }

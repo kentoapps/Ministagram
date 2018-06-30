@@ -37,10 +37,10 @@ class SignInFragment : Fragment(), Injectable {
 
         buttonSignUp.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_toSignUp, null))
 
+        viewModel.errorMessage.set("")
         viewModel.successCommand.observe(this, Observer {
             NavHostFragment.findNavController(this).navigate(R.id.main_activity)
             requireActivity().finish()
         })
     }
-
 }

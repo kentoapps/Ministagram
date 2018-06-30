@@ -6,6 +6,8 @@
 
     <data>
 
+        <import type="android.view.View"/>
+
         <variable
             name="vm"
             type="com.kentoapps.ministagram.ui.account.AccountViewModel"/>
@@ -28,15 +30,17 @@
             android:paddingEnd="8dp"
             android:paddingStart="8dp"
             android:paddingTop="4dp"
-            android:text="@string/error_sign_up"
+            android:text="@{vm.errorMessage}"
+            android:textSize="16sp"
             android:textColor="@color/error"
-            android:visibility="invisible"
+            android:visibility="@{vm.errorMessage.isEmpty() ? View.INVISIBLE : View.VISIBLE}"
             app:layout_constraintBottom_toTopOf="@+id/userNameEdit"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_chainStyle="packed"
+            tools:text="@string/error_sign_up"
             tools:visibility="visible"/>
 
         <EditText
