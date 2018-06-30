@@ -5,6 +5,7 @@ import io.reactivex.Completable
 import io.reactivex.Observable
 
 interface UserRepository {
+    fun isSignIn(): Observable<Boolean>
     fun signUp(userName: String, email: String, password: String): Completable
     fun signIn(email: String, password: String): Completable
     fun signOut(): Completable

@@ -6,6 +6,10 @@ import io.reactivex.Observable
 import javax.inject.Inject
 
 class UserRepositoryImpl @Inject constructor(private val dataSource: UserDataSource) : UserRepository {
+    override fun isSignIn(): Observable<Boolean> {
+        return dataSource.isSignIn()
+    }
+
     override fun signUp(userName: String, email: String, password: String): Completable {
         return dataSource.signUp(userName, email, password)
     }

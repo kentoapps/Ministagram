@@ -8,6 +8,9 @@ import io.reactivex.Completable
 import io.reactivex.Observable
 
 class UserRemoteDataSource : UserDataSource {
+    override fun isSignIn(): Observable<Boolean> =
+            Observable.just(FirebaseAuth.getInstance().currentUser != null)
+
     override fun signUp(userName: String, email: String, password: String): Completable {
         return Completable.create { emitter ->
             FirebaseAuth.getInstance()
