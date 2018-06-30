@@ -1,6 +1,7 @@
 package com.kentoapps.ministagram.data.source.post
 
 import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.firestore.Query
 import com.google.firebase.storage.FirebaseStorage
 import com.kentoapps.ministagram.data.model.Post
 import com.kentoapps.ministagram.data.model.PostRequest
@@ -18,6 +19,7 @@ class PostRemoteDataSource : PostDataSource {
     override fun getPostList(): Observable<List<Post>> {
         return Observable.create { emitter ->
             db.collection(COLLECTION_POST)
+                    .orderBy("date", Query.Direction.DESCENDING)
                     .get()
                     .addOnCompleteListener { task ->
                         if (task.isSuccessful) {
