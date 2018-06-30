@@ -15,6 +15,11 @@ class SignInViewModel @Inject constructor(private val repository: UserRepository
     val errorMessage = ObservableField<String>("")
     val successCommand = SingleLiveEvent<Void>()
 
+    fun isSignIn() {
+        repository.isSignIn()
+                .subscribeBy { isSignIn -> if (isSignIn) successCommand.call() }
+    }
+
     fun onSignInClick() {
         if (email.get().isNullOrBlank() || password.get().isNullOrBlank())
             errorMessage.set("Please fill out all fields")
