@@ -10,14 +10,14 @@
 
         <variable
             name="vm"
-            type="com.kentoapps.ministagram.ui.signin.SignInViewModel"/>
+            type="com.kentoapps.ministagram.ui.account.AccountViewModel"/>
     </data>
 
     <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@drawable/bg_gradation"
-        tools:context=".ui.signin.SignInFragment">
+        tools:context=".ui.account.SignInFragment">
 
         <ImageView
             android:id="@+id/imageLogo"

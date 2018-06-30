@@ -8,14 +8,14 @@
 
         <variable
             name="vm"
-            type="com.kentoapps.ministagram.ui.signup.SignUpViewModel"/>
+            type="com.kentoapps.ministagram.ui.account.AccountViewModel"/>
     </data>
 
     <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@drawable/bg_gradation"
-        tools:context=".ui.signup.SignUpFragment">
+        tools:context=".ui.account.SignUpFragment">
 
         <TextView
             android:id="@+id/errorText"

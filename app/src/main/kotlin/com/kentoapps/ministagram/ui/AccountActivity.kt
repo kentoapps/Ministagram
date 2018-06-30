@@ -8,7 +8,7 @@ import android.support.v4.app.Fragment
 import android.support.v7.app.AppCompatActivity
 import androidx.navigation.Navigation
 import com.kentoapps.ministagram.R
-import com.kentoapps.ministagram.ui.signin.SignInViewModel
+import com.kentoapps.ministagram.ui.account.AccountViewModel
 import dagger.android.AndroidInjector
 import dagger.android.DispatchingAndroidInjector
 import dagger.android.support.HasSupportFragmentInjector
@@ -19,7 +19,7 @@ class AccountActivity : AppCompatActivity(), HasSupportFragmentInjector {
     @Inject lateinit var viewModelFactory: ViewModelProvider.Factory
 
     private val viewModel by lazy {
-        ViewModelProviders.of(this, viewModelFactory).get(SignInViewModel::class.java)
+        ViewModelProviders.of(this, viewModelFactory).get(AccountViewModel::class.java)
     }
 
     override fun supportFragmentInjector(): AndroidInjector<Fragment> = androidInjector

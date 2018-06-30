@@ -6,7 +6,7 @@
 
     <fragment
         android:id="@+id/signInFragment"
-        android:name="com.kentoapps.ministagram.ui.signin.SignInFragment"
+        android:name="com.kentoapps.ministagram.ui.account.SignInFragment"
         android:label="sign_in_fragment"
         tools:layout="@layout/sign_in_fragment">
         <action
@@ -19,7 +19,7 @@
     </fragment>
     <fragment
         android:id="@+id/signUpFragment"
-        android:name="com.kentoapps.ministagram.ui.signup.SignUpFragment"
+        android:name="com.kentoapps.ministagram.ui.account.SignUpFragment"
         android:label="fragment_sign_up"
         tools:layout="@layout/sign_up_fragment"/>
     <activity

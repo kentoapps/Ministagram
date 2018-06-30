@@ -2,10 +2,9 @@ package com.kentoapps.ministagram.di.module
 
 import android.arch.lifecycle.ViewModel
 import com.kentoapps.ministagram.di.ViewModelKey
-import com.kentoapps.ministagram.ui.signin.SignInFragment
-import com.kentoapps.ministagram.ui.signin.SignInViewModel
-import com.kentoapps.ministagram.ui.signup.SignUpFragment
-import com.kentoapps.ministagram.ui.signup.SignUpViewModel
+import com.kentoapps.ministagram.ui.account.AccountViewModel
+import com.kentoapps.ministagram.ui.account.SignInFragment
+import com.kentoapps.ministagram.ui.account.SignUpFragment
 import dagger.Binds
 import dagger.Module
 import dagger.android.ContributesAndroidInjector
@@ -26,14 +25,9 @@ abstract class AccountModule {
 
     @Binds
     @IntoMap
-    @ViewModelKey(SignInViewModel::class)
-    abstract fun bindSignInViewModel(viewModel: SignInViewModel): ViewModel
+    @ViewModelKey(AccountViewModel::class)
+    abstract fun bindSignInViewModel(viewModel: AccountViewModel): ViewModel
 
     @ContributesAndroidInjector
     abstract fun contributeSignUpFragment(): SignUpFragment
-
-    @Binds
-    @IntoMap
-    @ViewModelKey(SignUpViewModel::class)
-    abstract fun bindSignUpViewModel(viewModel: SignUpViewModel): ViewModel
 }
