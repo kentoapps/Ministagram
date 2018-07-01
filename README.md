@@ -3,8 +3,7 @@
 # About
 This is Instagram like application which is not for release or monetize.
 
-⚠️ I don't upload `google-services.json` (for Firebase) for security reason ⚠️
-⚠️ It means you cannot use this app even if you clone and run it but I'll deploy the app to somewhere soon ⚠️
+⚠️ I don't upload `google-services.json` (for Firebase) for security reason. It means you cannot use this app even if you clone and run it but I'll deploy the app to somewhere soon
 
 # Why I created this app
 I created this app to show my developing skill.
@@ -106,3 +105,18 @@ I'll use CI for automated unit tests and deployment!
 - Comment feature
 - Following / Followed user
 - Adding filter to image
+
+# License
+Copyright 2018 Kento Uchida
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+   http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
