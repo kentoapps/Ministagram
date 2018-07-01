@@ -40,11 +40,11 @@ In order to work with architecture, I'm using RxJava and Dagger. They enables yo
 
 I also wrote test codes using Mockito but I wanted to put a priority on developing features so I wrote just few test cases this time. In practical, writing test first is better though.
 
-# Architecutre
+# Architecture
 🚧 I'll put a diagram of architecture here 🚧
 
 ## UI Layer
-UI layer architecuter is MVVM using ViewModel and Data Binding from Jetpack.
+UI layer architecture is MVVM using ViewModel and Data Binding from Jetpack.
 ViewModel classes have some datas which is shown on View. ViewModel classes also have logics and it's not depended on other classes such as Activity, Fragment and View. Therefore it's easy to test them.
 Thanks to Data Binding, I can bind data which is in ViewModel and layout(xml) without writing redundant biding codes!
 
@@ -54,7 +54,7 @@ TODO
 # Android Jetpack
 ![jetpack_donut](https://user-images.githubusercontent.com/8979200/42127909-3e1d901c-7c55-11e8-8eb0-713632607778.png)
 
-In Google I/O 2018, Google annouced Android Jetpack which is a set of libraries, tools and architectural guidance to help make it quick and easy to build great Android apps.
+In Google I/O 2018, Google announced Android Jetpack which is a set of libraries, tools and architectural guidance to help make it quick and easy to build great Android apps.
 Some of them are still alpha or beta but I love trying cutting-edged features and this is a good opportunity to do it so I tried some of them!
 
 I wrote down what I usded through developing this app.
@@ -87,14 +87,14 @@ ConstraintLayout enables you to make flat and efficient layout.
 I'd also like to use MotionLayout which is new feature of ConstraintLayout 2.0 eventually!
 
 ## Behavior
-- Premissions (Upcoming!)
+- Permissions (Upcoming!)
 - Notifications (Upcoming!)
 
 # CI and Deployment
 I'll use CI for automated unit tests and deployment!
 
 # Upcoming Features
-- Permissons
+- Permissions
 - Notifications
 - Filtering posts on timeline
 - Cache posts using Room
