@@ -3,11 +3,11 @@ package com.kentoapps.ministagram.ui.post
 import android.arch.lifecycle.Observer
 import android.arch.lifecycle.ViewModelProvider
 import android.arch.lifecycle.ViewModelProviders
-import android.net.Uri
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v7.app.AppCompatActivity
 import android.view.*
+import androidx.core.net.toUri
 import androidx.navigation.fragment.NavHostFragment
 import com.kentoapps.ministagram.R
 import com.kentoapps.ministagram.databinding.PostFragmentBinding
@@ -23,7 +23,7 @@ class PostFragment : Fragment(), Injectable {
         ViewModelProviders.of(requireActivity(), viewModelFactory).get(PostViewModel::class.java)
     }
     private val imageUri by lazy {
-        Uri.parse(arguments?.let { PostFragmentArgs.fromBundle(it).imageUri })
+        arguments?.let { PostFragmentArgs.fromBundle(it).imageUri.toUri() }
     }
     private lateinit var binding: PostFragmentBinding
 
