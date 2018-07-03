@@ -42,4 +42,5 @@ ext {
     rxJavaVersion = '2.1.12'
     rxKotlinVersion = '2.2.0'
     daggerVersion = '2.14.1'
+    permissionDispatherVersion = '3.3.1'
 }

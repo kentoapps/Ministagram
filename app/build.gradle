@@ -64,6 +64,11 @@ dependencies {
     // UI
     implementation 'com.squareup.picasso:picasso:2.71828'
 
+    implementation("com.github.hotchemi:permissionsdispatcher:${rootProject.permissionDispatherVersion}") {
+        exclude module: "support-v13"
+    }
+    kapt "com.github.hotchemi:permissionsdispatcher-processor:${rootProject.permissionDispatherVersion}"
+
     // Test
     testImplementation "com.nhaarman:mockito-kotlin:1.5.0"
     testImplementation 'junit:junit:4.12'
