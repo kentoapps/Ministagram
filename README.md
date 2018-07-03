@@ -40,7 +40,7 @@ In order to work with architecture, I'm using RxJava and Dagger. They enables yo
 I also wrote test codes using Mockito but I wanted to put a priority on developing features so I wrote just few test cases this time. In practical, writing test first is better though.
 
 # Architecture
-<img width="1008" alt="screen shot 2018-07-02 at 22 10 26" src="https://user-images.githubusercontent.com/8979200/42199882-cb178c9c-7e45-11e8-882b-66dc29909a45.png">
+<img width="1009" alt="screen shot 2018-07-02 at 22 19 06" src="https://user-images.githubusercontent.com/8979200/42199953-07a873b0-7e46-11e8-8728-87c47aa9a36a.png">
 
 ## UI Layer
 UI layer architecture is MVVM using ViewModel and Data Binding from Jetpack.
