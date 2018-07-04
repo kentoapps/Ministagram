@@ -16,4 +16,6 @@
     <string name="photo">Photo</string>
     <string name="post">Post</string>
     <string name="sign_out">Sign out</string>
+    <string name="permission_never_ask">Go to setting and allow permission</string>
+    <string name="permission_denied">Permission is required</string>
 </resources>
