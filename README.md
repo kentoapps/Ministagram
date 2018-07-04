@@ -1,3 +1,5 @@
+🚧️ This app is still WIP 🚧️
+
 # About
 This is Instagram like application which is not for release or monetize.
 
