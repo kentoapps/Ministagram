@@ -28,6 +28,7 @@ I arranged ui design during developing so the app differs a little from the desi
 - Dagger 2
 - Firebase (Auth, Firestore, Storage)
 - Picasso
+- PermissionDispatcher
 - Timber
 - Mockito
 
@@ -75,7 +76,7 @@ If you use Data Binding, you can bind view and data without writing boilerplate.
 Also LiveData and ViewModel care data state so it's safe even if user rotates screen.
 
 Navigation is one of exciting new features for me! It's still alpha and there aren't enough information or tips about it but it's powerful so it'll be standard feature in the near future.  
-Navigaiton looks like Storyboard iOS which shows screen navigation clearly. However it differs from Storyboard. You cannot edit views in layout but edit only navigation including transition animation and arguments.  
+Navigation looks like Storyboard iOS which shows screen navigation clearly. However it differs from Storyboard. You cannot edit views in layout but edit only navigation including transition animation and arguments.  
 I like Navigation because I can write more simple codes in class file and pass arguments to another fragment safely(type safe).
 
 ## Foundation
@@ -92,8 +93,12 @@ ConstraintLayout enables you to make flat and efficient layout.
 I'd also like to use MotionLayout which is new feature of ConstraintLayout 2.0 eventually!
 
 ## Behavior
-- Permissions (Upcoming!)
+- Permissions
 - Notifications (Upcoming!)
+
+After API level 23, runtime permission is required.  
+The procedure is a little bit complicated and redundant so I'm using a library PermissionDispatcher.  
+Thanks to the library I can implement runtime permission clearly using annotations.
 
 # CI and Deployment
 I'll use CI for automated unit tests and deployment!
