@@ -8,7 +8,9 @@ import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
 import android.provider.MediaStore
+import android.provider.Settings
 import android.support.v4.app.Fragment
+import android.support.v7.app.AlertDialog
 import android.support.v7.app.AppCompatActivity
 import android.view.MenuItem
 import android.widget.Toast
@@ -81,7 +83,7 @@ class MainActivity : AppCompatActivity(), HasSupportFragmentInjector {
         }
         imageUri = contentResolver.insert(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, values)
 
-        val intent =  Intent().apply {
+        val intent = Intent().apply {
             action = MediaStore.ACTION_IMAGE_CAPTURE
             putExtra(MediaStore.EXTRA_OUTPUT, imageUri)
         }
@@ -90,9 +92,7 @@ class MainActivity : AppCompatActivity(), HasSupportFragmentInjector {
     }
 
     @OnShowRationale(Manifest.permission.WRITE_EXTERNAL_STORAGE)
-    fun showRationaleForWriteExternalStorage(request: PermissionRequest) {
-        request.proceed()
-    }
+    fun showRationaleForWriteExternalStorage(request: PermissionRequest) = request.proceed()
 
     @OnPermissionDenied(Manifest.permission.WRITE_EXTERNAL_STORAGE)
     fun onWriteExternalStorageDenied() {
@@ -101,7 +101,19 @@ class MainActivity : AppCompatActivity(), HasSupportFragmentInjector {
 
     @OnNeverAskAgain(Manifest.permission.WRITE_EXTERNAL_STORAGE)
     fun onWriteExternalStorageNeverAskAgain() {
-        Toast.makeText(this, R.string.permission_never_ask, Toast.LENGTH_SHORT).show()
+        AlertDialog.Builder(this)
+                .setMessage(R.string.permission_setting)
+                .setPositiveButton(R.string.button_setting) { _, _ -> showSetting() }
+                .setNegativeButton(R.string.button_cancel) { _, _ -> }
+                .show()
+    }
+
+    private fun showSetting() {
+        val intent = Intent().apply {
+            action = Settings.ACTION_APPLICATION_DETAILS_SETTINGS
+            data = Uri.fromParts("package", applicationContext.packageName, null)
+        }
+        startActivity(intent)
     }
 
     override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<String>, grantResults: IntArray) {

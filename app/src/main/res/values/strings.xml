@@ -18,4 +18,7 @@
     <string name="sign_out">Sign out</string>
     <string name="permission_never_ask">Go to setting and allow permission</string>
     <string name="permission_denied">Permission is required</string>
+    <string name="permission_setting">Permission was denied.\nPlease go to setting and allow the permission.</string>
+    <string name="button_setting">Setting</string>
+    <string name="button_cancel">Cancel</string>
 </resources>
