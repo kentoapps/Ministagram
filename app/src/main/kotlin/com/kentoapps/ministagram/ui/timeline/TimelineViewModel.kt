@@ -9,17 +9,22 @@ import io.reactivex.rxkotlin.subscribeBy
 import io.reactivex.subjects.BehaviorSubject
 import javax.inject.Inject
 
-class TimelineViewModel @Inject constructor(private val repository: PostRepository): ViewModel() {
+class TimelineViewModel @Inject constructor(private val repository: PostRepository) : ViewModel() {
     val posts: BehaviorSubject<List<Post>> = BehaviorSubject.create()
 
     private val disposables = CompositeDisposable()
 
     fun getPostList() {
         repository.getPostList()
-                .subscribeBy (
+                .subscribeBy(
                         onNext = { posts.onNext(it) },
                         onError = { println("=== Error: [getPostList] ${it.message}") }
                 ).addTo(disposables)
+    }
+
+    fun updateLike(id: String) {
+        val post = posts.value?.first { it.id == id } ?: return
+        println("===== ${post.isLike}")
     }
 
     override fun onCleared() {

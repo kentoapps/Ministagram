@@ -61,7 +61,7 @@
             tools:srcCompat="@tools:sample/backgrounds/scenic"/>
 
         <ImageView
-            android:id="@+id/favoriteButton"
+            android:id="@+id/likeButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
@@ -75,9 +75,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
-            app:layout_constraintBottom_toBottomOf="@+id/favoriteButton"
-            app:layout_constraintStart_toEndOf="@+id/favoriteButton"
-            app:layout_constraintTop_toTopOf="@+id/favoriteButton"
+            app:layout_constraintBottom_toBottomOf="@+id/likeButton"
+            app:layout_constraintStart_toEndOf="@+id/likeButton"
+            app:layout_constraintTop_toTopOf="@+id/likeButton"
             app:srcCompat="@drawable/ic_comment"/>
 
         <TextView
@@ -88,7 +88,7 @@
             android:layout_marginTop="8dp"
             android:textSize="12sp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/favoriteButton"
+            app:layout_constraintTop_toBottomOf="@+id/likeButton"
             tools:text="12 Likes"/>
 
         <TextView
