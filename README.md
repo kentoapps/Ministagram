@@ -61,7 +61,7 @@ I'll implement `LocalDataStore` using Room.
 In Google I/O 2018, Google announced Android Jetpack which is a set of libraries, tools and architectural guidance to help make it quick and easy to build great Android apps.  
 Some of them are still alpha or beta but I love trying cutting-edged features and this is a good opportunity to do it so I tried some of them!
 
-I wrote down what I usded through developing this app.
+I wrote down what I used through developing this app.
 
 ## Architecture
 - Data Binding
