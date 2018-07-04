@@ -23,7 +23,11 @@ class PostRemoteDataSource : PostDataSource {
                     .get()
                     .addOnCompleteListener { task ->
                         if (task.isSuccessful) {
-                            emitter.onNext(task.result.map { it.toObject(Post::class.java) })
+                            val posts = task.result.map { result ->
+                                val post = result.toObject(Post::class.java)
+                                post.apply { id = result.id }
+                            }
+                            emitter.onNext(posts)
                         } else {
                             emitter.onError(Throwable("ERROR"))
                         }
