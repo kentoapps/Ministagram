@@ -9,8 +9,8 @@ import android.net.Uri
 import android.os.Bundle
 import android.provider.MediaStore
 import android.provider.Settings
+import android.support.design.widget.Snackbar
 import android.support.v4.app.Fragment
-import android.support.v7.app.AlertDialog
 import android.support.v7.app.AppCompatActivity
 import android.view.MenuItem
 import android.widget.Toast
@@ -101,10 +101,8 @@ class MainActivity : AppCompatActivity(), HasSupportFragmentInjector {
 
     @OnNeverAskAgain(Manifest.permission.WRITE_EXTERNAL_STORAGE)
     fun onWriteExternalStorageNeverAskAgain() {
-        AlertDialog.Builder(this)
-                .setMessage(R.string.permission_setting)
-                .setPositiveButton(R.string.button_setting) { _, _ -> showSetting() }
-                .setNegativeButton(R.string.button_cancel) { _, _ -> }
+        Snackbar.make(findViewById(android.R.id.content), R.string.permission_setting, Snackbar.LENGTH_LONG)
+                .setAction(R.string.button_setting) { showSetting() }
                 .show()
     }
 
