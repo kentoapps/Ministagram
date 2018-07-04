@@ -106,7 +106,6 @@ Thanks to the library I can implement runtime permission clearly using annotatio
 I'll use CI for automated unit tests and deployment!
 
 # Upcoming Features
-- Permissions
 - Notifications
 - Filtering posts on timeline
 - Cache posts using Room
