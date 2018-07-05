@@ -5,7 +5,9 @@ import com.google.firebase.firestore.Query
 import com.google.firebase.storage.FirebaseStorage
 import com.kentoapps.ministagram.data.model.Post
 import com.kentoapps.ministagram.data.model.PostRequest
+import com.kentoapps.ministagram.data.model.User
 import com.kentoapps.ministagram.util.COLLECTION_POST
+import com.kentoapps.ministagram.util.FIELD_LIKE_USERS
 import com.kentoapps.ministagram.util.STORAGE_POSTS
 import io.reactivex.Completable
 import io.reactivex.Observable
@@ -14,8 +16,8 @@ import java.util.*
 
 class PostRemoteDataSource : PostDataSource {
     private val db = FirebaseFirestore.getInstance()
-    private val storage = FirebaseStorage.getInstance()
 
+    private val storage = FirebaseStorage.getInstance()
     override fun getPostList(): Observable<List<Post>> {
         return Observable.create { emitter ->
             db.collection(COLLECTION_POST)
@@ -63,6 +65,17 @@ class PostRemoteDataSource : PostDataSource {
 
     override fun deletePost(id: String): Completable {
         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    }
+
+    override fun updateLike(id: String, users: List<User>): Completable {
+        val likeUsers = users.map { it.toMap() }
+        return Completable.create { emitter ->
+            db.collection(COLLECTION_POST)
+                    .document(id)
+                    .update(FIELD_LIKE_USERS, likeUsers)
+                    .addOnSuccessListener { emitter.onComplete() }
+                    .addOnFailureListener { emitter.onError(it) }
+        }
     }
 
     private fun generatePost(pr: PostRequest, imageUrl: String) =

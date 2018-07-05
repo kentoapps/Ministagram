@@ -2,6 +2,7 @@ package com.kentoapps.ministagram.data.source.post
 
 import com.kentoapps.ministagram.data.model.Post
 import com.kentoapps.ministagram.data.model.PostRequest
+import com.kentoapps.ministagram.data.model.User
 import io.reactivex.Completable
 import io.reactivex.Observable
 import javax.inject.Inject
@@ -12,6 +13,7 @@ interface PostRepository {
     fun savePost(post: PostRequest): Completable
     fun updatePost(post: Post): Completable
     fun deletePost(id: String): Completable
+    fun updateLike(id: String, users: List<User>): Completable
 }
 
 class PostRepositoryImpl @Inject constructor(private val dataSource: PostDataSource) : PostRepository {
@@ -33,5 +35,9 @@ class PostRepositoryImpl @Inject constructor(private val dataSource: PostDataSou
 
     override fun deletePost(id: String): Completable {
         return dataSource.deletePost(id)
+    }
+
+    override fun updateLike(id: String, users: List<User>): Completable {
+        return dataSource.updateLike(id, users)
     }
 }
