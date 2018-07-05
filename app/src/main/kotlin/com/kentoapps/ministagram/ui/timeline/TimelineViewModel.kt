@@ -5,6 +5,7 @@ import com.kentoapps.ministagram.data.model.Post
 import com.kentoapps.ministagram.data.source.post.PostRepository
 import com.kentoapps.ministagram.data.source.user.UserRepository
 import io.reactivex.disposables.CompositeDisposable
+import io.reactivex.rxkotlin.Observables
 import io.reactivex.rxkotlin.addTo
 import io.reactivex.rxkotlin.subscribeBy
 import io.reactivex.subjects.BehaviorSubject
@@ -19,11 +20,17 @@ class TimelineViewModel @Inject constructor(
     private val disposables = CompositeDisposable()
 
     fun getPostList() {
-        repository.getPostList()
-                .subscribeBy(
-                        onNext = { posts.onNext(it) },
-                        onError = { println("=== Error: [getPostList] ${it.message}") }
-                ).addTo(disposables)
+        Observables.combineLatest(
+                repository.getPostList(),
+                userRepository.getUser())
+        { pl, u ->
+            pl.map { p ->
+                p.apply { if (likeUsers.contains(u)) isLike = true }
+            }
+        }.subscribeBy(
+                onNext = { posts.onNext(it) },
+                onError = { println("=== Error: [getPostList] ${it.message}") }
+        ).addTo(disposables)
     }
 
     fun updateLike(id: String) {
