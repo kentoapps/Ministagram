@@ -4,6 +4,7 @@ import android.arch.lifecycle.ViewModel
 import com.kentoapps.ministagram.data.model.Post
 import com.kentoapps.ministagram.data.source.post.PostRepository
 import com.kentoapps.ministagram.data.source.user.UserRepository
+import com.kentoapps.ministagram.util.SingleLiveEvent
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.rxkotlin.Observables
 import io.reactivex.rxkotlin.addTo
@@ -16,6 +17,7 @@ class TimelineViewModel @Inject constructor(
         private val userRepository: UserRepository) : ViewModel() {
 
     val posts: BehaviorSubject<List<Post>> = BehaviorSubject.create()
+    val openCommentEvent = SingleLiveEvent<String>()
 
     private val disposables = CompositeDisposable()
 
@@ -46,6 +48,10 @@ class TimelineViewModel @Inject constructor(
                         onComplete = { println("=== onComplete updateLike!") },
                         onError = { println("=== onError updateLike $it") }
                 ).addTo(disposables)
+    }
+
+    fun onCommentClick(id: String?) {
+        openCommentEvent.value = id
     }
 
     override fun onCleared() {

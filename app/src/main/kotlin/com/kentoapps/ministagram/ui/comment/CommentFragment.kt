@@ -11,8 +11,8 @@ import com.kentoapps.ministagram.R
 
 class CommentFragment : Fragment() {
 
-    companion object {
-        fun newInstance() = CommentFragment()
+    private val postId by lazy {
+        arguments?.let { CommentFragmentArgs.fromBundle(it).postId }
     }
 
     private lateinit var viewModel: CommentViewModel

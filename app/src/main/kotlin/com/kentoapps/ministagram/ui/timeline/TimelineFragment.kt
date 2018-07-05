@@ -1,10 +1,12 @@
 package com.kentoapps.ministagram.ui.timeline
 
+import android.arch.lifecycle.Observer
 import android.arch.lifecycle.ViewModelProvider
 import android.arch.lifecycle.ViewModelProviders
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.view.*
+import androidx.navigation.fragment.NavHostFragment
 import com.kentoapps.ministagram.R
 import com.kentoapps.ministagram.databinding.TimelineFragmentBinding
 import com.kentoapps.ministagram.di.Injectable
@@ -34,6 +36,11 @@ class TimelineFragment : Fragment(), Injectable {
         val adapter = TimelineAdapter(viewModel)
         viewModel.posts.subscribe { adapter.submitList(it) }.addTo(disposables)
         binding.timelineRecycler.adapter = adapter
+
+        viewModel.openCommentEvent.observe(this, Observer {
+            NavHostFragment.findNavController(this)
+                    .navigate(TimelineFragmentDirections.toComment(it))
+        })
 
         if (savedInstanceState == null) viewModel.getPostList()
     }

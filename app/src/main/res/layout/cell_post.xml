@@ -23,6 +23,7 @@
 
         <ImageView
             android:id="@+id/userImage"
+            image="@{item.userImage}"
             android:layout_width="40dp"
             android:layout_height="40dp"
             android:layout_marginStart="16dp"
@@ -30,8 +31,7 @@
             android:scaleType="centerCrop"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            tools:srcCompat="@tools:sample/avatars"
-            image="@{item.userImage}"/>
+            tools:srcCompat="@tools:sample/avatars"/>
 
         <TextView
             android:id="@+id/userText"
@@ -75,6 +75,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
+            android:onClick="@{v -> vm.onCommentClick(item.id)}"
             app:layout_constraintBottom_toBottomOf="@+id/likeButton"
             app:layout_constraintStart_toEndOf="@+id/likeButton"
             app:layout_constraintTop_toTopOf="@+id/likeButton"
