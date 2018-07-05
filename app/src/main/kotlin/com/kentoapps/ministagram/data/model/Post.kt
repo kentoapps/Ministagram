@@ -9,7 +9,7 @@ data class Post constructor(
         var userImage: String? = null,
         var image: String? = null,
         var caption: String? = null,
-        var likeUsers: List<User> = emptyList(),
+        var likeUsers: MutableList<User> = mutableListOf(),
         var isLike: Boolean = false,
         var numOfComments: Int = 0,
         var date: Date = Date())
