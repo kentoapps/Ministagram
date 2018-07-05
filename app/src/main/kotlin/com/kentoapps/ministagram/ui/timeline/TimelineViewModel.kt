@@ -33,12 +33,13 @@ class TimelineViewModel @Inject constructor(
         ).addTo(disposables)
     }
 
-    fun updateLike(id: String) {
+    fun updateLike(id: String, updateLikeNumText: () -> Unit) {
         val post = posts.value?.first { it.id == id } ?: return
         userRepository.getUser()
                 .flatMapCompletable { user ->
                     if (post.isLike) post.likeUsers.add(user)
                     else post.likeUsers.remove(user)
+                    updateLikeNumText()
 
                     repository.updateLike(id, post.likeUsers)
                 }.subscribeBy(

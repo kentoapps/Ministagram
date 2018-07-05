@@ -32,7 +32,7 @@ class TimelineAdapter(private val viewModel: TimelineViewModel) : ListAdapter<Po
             binding.likeButton.setOnClickListener {
                 post.isLike = !post.isLike
                 setLikeImage(post.isLike)
-                post.id?.let { viewModel.updateLike(it) }
+                post.id?.let { viewModel.updateLike(it) { binding.likeNumText.text = post.likeUsers.count().withSuffix(Suffix.LIKE)} }
             }
             setLikeImage(post.isLike)
         }
