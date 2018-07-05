@@ -9,7 +9,15 @@
         android:id="@+id/timeline"
         android:name="com.kentoapps.ministagram.ui.timeline.TimelineFragment"
         android:label="main_fragment"
-        tools:layout="@layout/timeline_fragment"/>
+        tools:layout="@layout/timeline_fragment">
+        <action
+            android:id="@+id/toComment"
+            app:destination="@id/commentFragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim"/>
+    </fragment>
     <fragment
         android:id="@+id/friends"
         android:name="com.kentoapps.ministagram.ui.friends.FriendsFragment"
@@ -27,6 +35,15 @@
         tools:layout="@layout/post_fragment">
         <argument
             android:name="imageUri"
+            app:type="string"/>
+    </fragment>
+    <fragment
+        android:id="@+id/commentFragment"
+        android:name="com.kentoapps.ministagram.ui.comment.CommentFragment"
+        android:label="comment_fragment"
+        tools:layout="@layout/comment_fragment">
+        <argument
+            android:name="postId"
             app:type="string"/>
     </fragment>
     <activity
