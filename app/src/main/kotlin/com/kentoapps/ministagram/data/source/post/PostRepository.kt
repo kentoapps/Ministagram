@@ -1,5 +1,6 @@
 package com.kentoapps.ministagram.data.source.post
 
+import com.kentoapps.ministagram.data.model.Comment
 import com.kentoapps.ministagram.data.model.Post
 import com.kentoapps.ministagram.data.model.PostRequest
 import com.kentoapps.ministagram.data.model.User
@@ -14,6 +15,7 @@ interface PostRepository {
     fun updatePost(post: Post): Completable
     fun deletePost(id: String): Completable
     fun updateLike(id: String, users: List<User>): Completable
+    fun getCommentList(postId: String): Observable<List<Comment>>
 }
 
 class PostRepositoryImpl @Inject constructor(private val dataSource: PostDataSource) : PostRepository {
@@ -39,5 +41,9 @@ class PostRepositoryImpl @Inject constructor(private val dataSource: PostDataSou
 
     override fun updateLike(id: String, users: List<User>): Completable {
         return dataSource.updateLike(id, users)
+    }
+
+    override fun getCommentList(postId: String): Observable<List<Comment>> {
+        return dataSource.getCommentList(postId)
     }
 }
