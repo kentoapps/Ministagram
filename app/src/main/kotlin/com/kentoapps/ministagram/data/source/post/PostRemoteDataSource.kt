@@ -51,7 +51,7 @@ class PostRemoteDataSource : PostDataSource {
             filePath.putFile(pr.uri)
                     .addOnSuccessListener {
                         filePath.downloadUrl.addOnSuccessListener { uri ->
-                            val post = generatePost(pr, uri.toString())
+                            val post = Post(pr, uri.toString())
                             db.collection(COLLECTION_POST)
                                     .add(post)
                                     .addOnSuccessListener { emitter.onComplete() }
@@ -99,13 +99,4 @@ class PostRemoteDataSource : PostDataSource {
                     .addOnFailureListener { emitter.onError(it) }
         }
     }
-
-    private fun generatePost(pr: PostRequest, imageUrl: String) =
-            Post(
-                    userId = pr.userId,
-                    userName = pr.userName,
-                    userImage = pr.userImage,
-                    image = imageUrl,
-                    caption = pr.caption,
-                    date = Date())
 }
