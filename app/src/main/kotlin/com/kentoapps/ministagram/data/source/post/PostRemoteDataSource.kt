@@ -3,9 +3,11 @@ package com.kentoapps.ministagram.data.source.post
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.Query
 import com.google.firebase.storage.FirebaseStorage
+import com.kentoapps.ministagram.data.model.Comment
 import com.kentoapps.ministagram.data.model.Post
 import com.kentoapps.ministagram.data.model.PostRequest
 import com.kentoapps.ministagram.data.model.User
+import com.kentoapps.ministagram.util.COLLECTION_COMMENT
 import com.kentoapps.ministagram.util.COLLECTION_POST
 import com.kentoapps.ministagram.util.FIELD_LIKE_USERS
 import com.kentoapps.ministagram.util.STORAGE_POSTS
@@ -65,6 +67,26 @@ class PostRemoteDataSource : PostDataSource {
 
     override fun deletePost(id: String): Completable {
         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    }
+
+    override fun getCommentList(postId: String): Observable<List<Comment>> {
+        return Observable.create { emitter ->
+            db.collection(COLLECTION_POST)
+                    .document(postId)
+                    .collection(COLLECTION_COMMENT)
+                    .get()
+                    .addOnCompleteListener { task ->
+                        if (task.isSuccessful) {
+                            val comments = task.result.map { result ->
+                                val comment = result.toObject(Comment::class.java)
+                                comment.apply { id = result.id }
+                            }
+                            emitter.onNext(comments)
+                        } else {
+                            emitter.onError(Throwable("ERROR"))
+                        }
+                    }
+        }
     }
 
     override fun updateLike(id: String, users: List<User>): Completable {
