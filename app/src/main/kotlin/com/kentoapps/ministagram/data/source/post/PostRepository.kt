@@ -16,6 +16,7 @@ interface PostRepository {
     fun deletePost(id: String): Completable
     fun updateLike(id: String, users: List<User>): Completable
     fun getCommentList(postId: String): Observable<List<Comment>>
+    fun saveComment(postId: String, comment: Comment): Completable
 }
 
 class PostRepositoryImpl @Inject constructor(private val dataSource: PostDataSource) : PostRepository {
@@ -45,5 +46,9 @@ class PostRepositoryImpl @Inject constructor(private val dataSource: PostDataSou
 
     override fun getCommentList(postId: String): Observable<List<Comment>> {
         return dataSource.getCommentList(postId)
+    }
+
+    override fun saveComment(postId: String, comment: Comment): Completable {
+        return dataSource.saveComment(postId, comment)
     }
 }

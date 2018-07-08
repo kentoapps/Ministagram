@@ -30,12 +30,13 @@ class CommentFragment : Fragment(), Injectable {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         binding.vm = viewModel
+        viewModel.postId = postId
 
         val adapter = CommentAdapter(viewModel)
         viewModel.comments.observe(this, Observer { adapter.submitList(it) })
         binding.commentRecycler.adapter = adapter
 
-        if (savedInstanceState == null) postId?.let { viewModel.getCommentList(it) }
+        if (savedInstanceState == null) viewModel.getCommentList()
     }
 
     override fun onDestroy() {

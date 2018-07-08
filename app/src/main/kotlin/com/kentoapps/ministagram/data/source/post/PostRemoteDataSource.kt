@@ -69,6 +69,17 @@ class PostRemoteDataSource : PostDataSource {
         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 
+    override fun updateLike(id: String, users: List<User>): Completable {
+        val likeUsers = users.map { it.toMap() }
+        return Completable.create { emitter ->
+            db.collection(COLLECTION_POST)
+                    .document(id)
+                    .update(FIELD_LIKE_USERS, likeUsers)
+                    .addOnSuccessListener { emitter.onComplete() }
+                    .addOnFailureListener { emitter.onError(it) }
+        }
+    }
+
     override fun getCommentList(postId: String): Observable<List<Comment>> {
         return Observable.create { emitter ->
             db.collection(COLLECTION_POST)
@@ -89,14 +100,17 @@ class PostRemoteDataSource : PostDataSource {
         }
     }
 
-    override fun updateLike(id: String, users: List<User>): Completable {
-        val likeUsers = users.map { it.toMap() }
+    override fun saveComment(postId: String, comment: Comment): Completable {
         return Completable.create { emitter ->
             db.collection(COLLECTION_POST)
-                    .document(id)
-                    .update(FIELD_LIKE_USERS, likeUsers)
-                    .addOnSuccessListener { emitter.onComplete() }
-                    .addOnFailureListener { emitter.onError(it) }
+                    .document(postId)
+                    .collection(COLLECTION_COMMENT)
+                    .add(comment)
+                    .addOnSuccessListener { println("===== s")
+                        emitter.onComplete() }
+                    .addOnCompleteListener { println("===== c") }
+                    .addOnFailureListener { println("===== f")
+                        emitter.onError(it) }
         }
     }
 }

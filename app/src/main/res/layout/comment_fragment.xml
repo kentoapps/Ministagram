@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <data>
 
@@ -39,6 +39,7 @@
             android:ems="10"
             android:hint="Write your comment"
             android:inputType="textMultiLine"
+            android:text="@={vm.commentEdit}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/button"
             app:layout_constraintHorizontal_bias="0.5"
@@ -50,9 +51,11 @@
             android:layout_height="wrap_content"
             android:layout_marginEnd="8dp"
             android:layout_marginStart="8dp"
+            android:background="@null"
+            android:foreground="?android:attr/selectableItemBackground"
+            android:onClick="@{v -> vm.onSendClick()}"
             android:text="@string/send"
             android:textAllCaps="false"
-            android:background="@null"
             app:layout_constraintBottom_toBottomOf="@+id/commentEdit"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"

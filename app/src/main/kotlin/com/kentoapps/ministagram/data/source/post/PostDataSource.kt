@@ -15,4 +15,5 @@ interface PostDataSource {
     fun deletePost(id: String): Completable
     fun updateLike(id: String, users: List<User>): Completable
     fun getCommentList(postId: String): Observable<List<Comment>>
+    fun saveComment(postId: String, comment: Comment): Completable
 }
