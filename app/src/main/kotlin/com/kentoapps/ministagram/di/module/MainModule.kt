@@ -2,6 +2,8 @@ package com.kentoapps.ministagram.di.module
 
 import android.arch.lifecycle.ViewModel
 import com.kentoapps.ministagram.di.ViewModelKey
+import com.kentoapps.ministagram.ui.comment.CommentFragment
+import com.kentoapps.ministagram.ui.comment.CommentViewModel
 import com.kentoapps.ministagram.ui.friends.FriendsFragment
 import com.kentoapps.ministagram.ui.friends.FriendsViewModel
 import com.kentoapps.ministagram.ui.post.PostFragment
@@ -49,4 +51,12 @@ abstract class MainModule {
     @IntoMap
     @ViewModelKey(PostViewModel::class)
     abstract fun bindPostViewModel(viewModel: PostViewModel): ViewModel
+
+    @ContributesAndroidInjector
+    abstract fun contributeCommentFragment(): CommentFragment
+
+    @Binds
+    @IntoMap
+    @ViewModelKey(CommentViewModel::class)
+    abstract fun bindCommentViewModel(viewModel: CommentViewModel): ViewModel
 }
