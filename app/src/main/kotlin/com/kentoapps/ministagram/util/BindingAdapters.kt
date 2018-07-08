@@ -8,8 +8,8 @@ import com.squareup.picasso.Picasso
 object BindingAdapters {
     @JvmStatic
     @BindingAdapter("image")
-    fun setImage(imageView: ImageView, url: String) {
-        Picasso.get().load(url).into(imageView)
+    fun setImage(imageView: ImageView, url: String?) {
+        if (url != null) Picasso.get().load(url).into(imageView)
     }
 
     @JvmStatic
