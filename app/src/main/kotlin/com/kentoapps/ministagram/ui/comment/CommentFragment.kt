@@ -1,5 +1,6 @@
 package com.kentoapps.ministagram.ui.comment
 
+import android.arch.lifecycle.Observer
 import android.arch.lifecycle.ViewModelProvider
 import android.arch.lifecycle.ViewModelProviders
 import android.os.Bundle
@@ -9,22 +10,16 @@ import android.view.View
 import android.view.ViewGroup
 import com.kentoapps.ministagram.databinding.CommentFragmentBinding
 import com.kentoapps.ministagram.di.Injectable
-import io.reactivex.disposables.CompositeDisposable
 import javax.inject.Inject
 
 class CommentFragment : Fragment(), Injectable {
     @Inject
     lateinit var viewModelFactory: ViewModelProvider.Factory
 
-    private val viewModel by lazy {
-        ViewModelProviders.of(requireActivity(), viewModelFactory).get(CommentViewModel::class.java)
-    }
-    private lateinit var binding: CommentFragmentBinding
-    private val disposables = CompositeDisposable()
+    private val viewModel by lazy { ViewModelProviders.of(requireActivity(), viewModelFactory).get(CommentViewModel::class.java) }
+    private val postId by lazy { arguments?.let { CommentFragmentArgs.fromBundle(it).postId } }
 
-    private val postId by lazy {
-        arguments?.let { CommentFragmentArgs.fromBundle(it).postId }
-    }
+    private lateinit var binding: CommentFragmentBinding
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
@@ -36,6 +31,15 @@ class CommentFragment : Fragment(), Injectable {
         super.onActivityCreated(savedInstanceState)
         binding.vm = viewModel
 
+        val adapter = CommentAdapter(viewModel)
+        viewModel.comments.observe(this, Observer { adapter.submitList(it) })
+        binding.commentRecycler.adapter = adapter
+
         if (savedInstanceState == null) postId?.let { viewModel.getCommentList(it) }
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        viewModel.clear()
     }
 }
