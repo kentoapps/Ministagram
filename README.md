@@ -1,4 +1,4 @@
-![top_logo](https://user-images.githubusercontent.com/8979200/42447028-43dcb3e6-832d-11e8-8a84-aaa2a329e2a5.png)
+![top_logo](https://user-images.githubusercontent.com/8979200/42447116-89fd5574-832d-11e8-8e4d-95314a2f2e34.png)
 
 🚧️ This app is still WIP 🚧️
 
