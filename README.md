@@ -1,3 +1,5 @@
+![top_logo](https://user-images.githubusercontent.com/8979200/42446908-d3f92082-832c-11e8-8bfa-458184dd21f7.png)
+
 🚧️ This app is still WIP 🚧️
 
 # About
