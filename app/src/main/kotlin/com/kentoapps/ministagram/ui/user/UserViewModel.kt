@@ -15,7 +15,7 @@ class UserViewModel @Inject constructor(private val repository: UserRepository) 
 
     private val disposables = CompositeDisposable()
 
-    fun onSignOutClick() {
+    fun signOut() {
         repository.signOut()
                 .subscribeBy(
                         onComplete = { successCommand.call() },

@@ -5,9 +5,7 @@ import android.arch.lifecycle.ViewModelProvider
 import android.arch.lifecycle.ViewModelProviders
 import android.os.Bundle
 import android.support.v4.app.Fragment
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.view.*
 import androidx.navigation.fragment.NavHostFragment
 import com.kentoapps.ministagram.R
 import com.kentoapps.ministagram.databinding.UserFragmentBinding
@@ -25,6 +23,7 @@ class UserFragment : Fragment(), Injectable {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
+        setHasOptionsMenu(true)
         binding = UserFragmentBinding.inflate(inflater, container, false)
         return binding.root
     }
@@ -39,4 +38,14 @@ class UserFragment : Fragment(), Injectable {
         })
     }
 
+    override fun onCreateOptionsMenu(menu: Menu?, inflater: MenuInflater?) {
+        inflater?.inflate(R.menu.menu_user, menu)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem?): Boolean {
+        when (item?.itemId) {
+            R.id.signOut -> viewModel.signOut()
+        }
+        return super.onOptionsItemSelected(item)
+    }
 }
