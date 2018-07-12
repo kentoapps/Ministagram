@@ -43,4 +43,5 @@ ext {
     rxKotlinVersion = '2.2.0'
     daggerVersion = '2.14.1'
     permissionDispatherVersion = '3.3.1'
+    timberVersion = '4.7.1'
 }
