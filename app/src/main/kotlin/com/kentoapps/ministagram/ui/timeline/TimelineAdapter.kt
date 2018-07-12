@@ -5,7 +5,6 @@ import android.support.v7.util.DiffUtil
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import com.kentoapps.ministagram.R
 import com.kentoapps.ministagram.data.model.Post
 import com.kentoapps.ministagram.databinding.CellPostBinding
 import com.kentoapps.ministagram.util.extension.Suffix
@@ -30,16 +29,9 @@ class TimelineAdapter(private val viewModel: TimelineViewModel) : ListAdapter<Po
             binding.likeNumText.text = post.likeUsers.size.withSuffix(Suffix.LIKE)
             binding.commentNumText.text = post.numOfComments.withSuffix(Suffix.COMMENT)
             binding.likeButton.setOnClickListener {
-                post.isLike = !post.isLike
-                setLikeImage(post.isLike)
+                post.isLike = binding.likeButton.isChecked
                 post.id?.let { viewModel.updateLike(it) { binding.likeNumText.text = post.likeUsers.count().withSuffix(Suffix.LIKE)} }
             }
-            setLikeImage(post.isLike)
-        }
-
-        private fun setLikeImage(isLike: Boolean) {
-            if (isLike) binding.likeButton.setImageResource(R.drawable.ic_favorite_red)
-            else binding.likeButton.setImageResource(R.drawable.ic_favorite)
         }
     }
 

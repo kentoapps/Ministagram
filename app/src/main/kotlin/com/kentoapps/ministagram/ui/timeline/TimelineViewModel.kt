@@ -2,6 +2,7 @@ package com.kentoapps.ministagram.ui.timeline
 
 import android.arch.lifecycle.ViewModel
 import com.kentoapps.ministagram.data.model.Post
+import com.kentoapps.ministagram.data.model.User
 import com.kentoapps.ministagram.data.source.post.PostRepository
 import com.kentoapps.ministagram.data.source.user.UserRepository
 import com.kentoapps.ministagram.util.SingleLiveEvent
@@ -26,14 +27,15 @@ class TimelineViewModel @Inject constructor(
                 repository.getPostList(),
                 userRepository.getUser())
         { pl, u ->
-            pl.map { p ->
-                p.apply { if (likeUsers.contains(u)) isLike = true }
-            }
+            pl.map { initIsLike(it, u) }
         }.subscribeBy(
                 onNext = { posts.onNext(it) },
                 onError = { println("=== Error: [getPostList] ${it.message}") }
         ).addTo(disposables)
     }
+
+    private fun initIsLike(p: Post, u: User) =
+            p.apply { if (likeUsers.map { it.userId }.contains(u.userId)) isLike = true }
 
     fun updateLike(id: String, updateLikeNumText: () -> Unit) {
         val post = posts.value?.first { it.id == id } ?: return
