@@ -115,8 +115,6 @@ I'll use CI for automated unit tests and deployment!
 - Paging timeline
 - Refreshing timeline by pulling down
 - Editing user info
-- Like button
-- Comment feature
 - Following / Followed user
 - Adding filter to image
 
