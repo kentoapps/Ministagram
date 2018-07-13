@@ -79,6 +79,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:onClick="@{v -> vm.onCommentClick(item.id)}"
+            android:foreground="?android:attr/selectableItemBackground"
             app:layout_constraintBottom_toBottomOf="@+id/likeButton"
             app:layout_constraintStart_toEndOf="@+id/likeButton"
             app:layout_constraintTop_toTopOf="@+id/likeButton"
