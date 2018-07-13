@@ -3,7 +3,7 @@
 # About
 ![top_logo](https://user-images.githubusercontent.com/8979200/42447116-89fd5574-832d-11e8-8e4d-95314a2f2e34.png)
 
-This is Instagram like application which is not for release or monetize.
+This is Instagram like application which is for portfolio and investigation not for release or monetize.
 
 ⚠️ I don't upload `google-services.json` (for Firebase) for security reason. It means you cannot use this app even if you clone and run it but I'll deploy the app to somewhere soon.
 
