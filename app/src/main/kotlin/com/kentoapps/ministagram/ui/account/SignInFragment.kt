@@ -16,6 +16,7 @@ import com.kentoapps.ministagram.di.Injectable
 import kotlinx.android.synthetic.main.sign_in_fragment.*
 import javax.inject.Inject
 
+// test
 class SignInFragment : Fragment(), Injectable {
     @Inject
     lateinit var viewModelFactory: ViewModelProvider.Factory
